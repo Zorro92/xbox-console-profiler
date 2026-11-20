@@ -50,9 +50,15 @@ The `game` variant (Dev Home App type = Game) was not run; the owner does not pl
 ## Caveats
 
 - One run per variant. The idle-phase numbers are from the first ~30 s of idle.
-- `expandedResources` is a restricted capability meant for games. It worked for a sideloaded UWP app in
-  Developer Mode here; whether it is usable in the owner's other apps (Store/retail policy, side effects on
-  other running apps, suspend behaviour) is not tested.
+- `expandedResources` is the old, deprecated manifest way to get Game resources. On Xbox it means "runs
+  with the CPU/GPU resources of a Game title instead of the resources of an App". It still works for
+  sideloaded apps in Developer Mode, but Store submissions that declare it are rejected. The supported
+  way to get Game resources is the "Game" type: Store metadata for published titles (ID@Xbox), or the
+  Dev Home "App type" switch while developing. So the expandedResources column shows what Game mode
+  gives; it is not an option for the owner's apps. Microsoft's documented limits (written for Xbox
+  One) are: apps get 1 GB foreground memory, 2-4 shared cores and up to 45% of the GPU; games get 5 GB,
+  4 exclusive + 2 shared cores and the full GPU. The measured app GPU share on Series X is lower, about
+  1/6 of what Game resources get (1.86 vs 11.25 TFLOP/s).
 - `cpu_1t_read_gbps` in the GPU UMA lines reports impossible values (millions of GB/s); the compiler
   probably removed that read loop. Other numbers are not affected.
 - "CPU memory" stops ~300 MiB below the app limit on purpose (`allow_over_limit=0`), and the app itself
