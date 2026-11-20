@@ -82,6 +82,9 @@ fs_query() {
   local subpath="$2"
   local full
   full="$(jq -r .PackageFullName <<<"$p")"
+  # Device Portal needs a leading backslash (\LocalState\...), else it appends the
+  # path to the package folder name without a separator and finds nothing.
+  case "$subpath" in \\*) ;; *) subpath="\\$subpath" ;; esac
   echo "knownfolderid=LocalAppData&packagefullname=$(enc "$full")&path=$(enc "$subpath")"
 }
 

@@ -1,0 +1,164 @@
+================================================================
+xbox-console-profiler starting
+Config: source=defaults states=both wake_mode=auto idle_wait_sec=15 mem_step_mib=100 mem_max_mib=16384 mixed_cpu_mib=0 allow_over_limit=0 tests=[cpu=1,bw=1,gpu=1,mem_cpu=1,mem_d3d11=1,mem_d3d12=1,mem_mixed_d3d11=1,mem_mixed_d3d12=1]
+InputInjector available at startup: yes
+=== SYSTEM INFO ===
+Package: XboxConsoleProfiler.Plain (Xbox Profiler (Plain)) v0.1.2.0 [Windows.Xbox 10.0.26100.9673]
+CPU: AuthenticAMD "Microsoft Xbox Series X CPU" native_procs=8 hw_conc=8 cpu_sets=8 alloc_to_target=0 avx=1 avx2=1 fma=1
+Initial memory: app=5.0/1024.0 MiB (Low) priv=4.2 ws=3.0
+Xbox extended pools: unavailable (hr=0x80070005)
+Adapter: SraKmd_arden (vid=0x1414) ded_vid=512.0 MiB shared=832.0 MiB
+Initial DXGI memory: LOCAL[use=0.0 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+LIFECYCLE VisibilityChanged: visible
+D3D12 arch: UMA=1 CacheCoherentUMA=1 IsolatedMMU=0
+=== PHASE: ACTIVE (wake=InputInjector(Shift), ms_since_input=34) ===
+--- CPU BENCHMARK [active] (ms_since_input=35) ---
+CPU serial latency: int=66.93 ms (597.6 Mchain/s) fp=41.83 ms (597.6 Mchain/s)
+CPU set pinning: total=8 pin_ok=8 distinct_observed_procs=8
+CPU ALU  1T: 13.75 Gops/s (scale 1.00x, 13.75 Gops/s/T) distinct_procs=1
+CPU ALU  2T: 27.32 Gops/s (scale 1.99x, 13.66 Gops/s/T) distinct_procs=3
+CPU ALU  4T: 54.40 Gops/s (scale 3.96x, 13.60 Gops/s/T) distinct_procs=4
+CPU ALU  6T: 55.07 Gops/s (scale 4.00x, 9.18 Gops/s/T) distinct_procs=8
+CPU ALU  8T: 56.95 Gops/s (scale 4.14x, 7.12 Gops/s/T) distinct_procs=8
+--- CPU MEMORY & CACHE BANDWIDTH [active] (ms_since_input=1618) ---
+BW  1T: L2_copy=56.1 GB/s (0.44ms/25MB) | DRAM_copy=12.69 GB/s (1.96ms/25MB) | DRAM_read=13.33 | NT_write=33.45 | NT_copy=11.29 GB/s (2.21ms/25MB)
+BW  2T: L2_copy=114.3 GB/s (0.22ms/25MB) | DRAM_copy=21.38 GB/s (1.16ms/25MB) | DRAM_read=24.56 | NT_write=33.87 | NT_copy=20.05 GB/s (1.24ms/25MB)
+BW  4T: L2_copy=168.3 GB/s (0.15ms/25MB) | DRAM_copy=23.39 GB/s (1.06ms/25MB) | DRAM_read=31.59 | NT_write=33.90 | NT_copy=23.28 GB/s (1.07ms/25MB)
+BW  6T: L2_copy=195.7 GB/s (0.13ms/25MB) | DRAM_copy=23.83 GB/s (1.04ms/25MB) | DRAM_read=35.51 | NT_write=34.51 | NT_copy=24.24 GB/s (1.03ms/25MB)
+BW  8T: L2_copy=211.7 GB/s (0.12ms/25MB) | DRAM_copy=23.83 GB/s (1.04ms/25MB) | DRAM_read=35.56 | NT_write=34.53 | NT_copy=24.16 GB/s (1.03ms/25MB)
+--- GPU BANDWIDTH & TIME-SHARE BENCHMARK [active] (ms_since_input=3101) ---
+GPU UPLOAD->DEFAULT (64 MiB): {"iters":6,"gpu_stats":{"min_ms":0.958085,"p50_ms":0.991749,"mean_ms":0.983246,"p95_ms":1.00113,"max_ms":1.00748},"wall_ms_including_warmup":8.14102,"payload_gbps":68.2523,"rw_gbps":136.505,"ms_per_25mb":0.364823,"cpu_1t_fill_gbps":28.5978,"cpu_1t_read_gbps":3.34681e+06}
+
+GPU DEFAULT->DEFAULT (64 MiB): {"iters":8,"gpu_stats":{"min_ms":0.68004,"p50_ms":0.692642,"mean_ms":0.688965,"p95_ms":0.693614,"max_ms":0.694837},"wall_ms_including_warmup":7.07794,"payload_gbps":97.4053,"rw_gbps":194.811,"ms_per_25mb":0.255633}
+
+GPU UMA CUSTOM_WB_L0: {"create_hr":"0x00000000","map_hr":"0x00000000","cpu_1t_fill_gbps":29.76,"cpu_1t_read_gbps":3.34681e+06,"gpu_copy":{"iters":6,"gpu_stats":{"min_ms":0.950236,"p50_ms":0.954777,"mean_ms":0.95459,"p95_ms":0.954957,"max_ms":0.960732},"wall_ms_including_warmup":7.88009,"payload_gbps":70.3013,"rw_gbps":140.603,"ms_per_25mb":0.35419}}
+
+GPU COMPUTE COPY (64 MiB): {"iters":6,"gpu_stats":{"min_ms":0.698376,"p50_ms":0.701794,"mean_ms":0.701251,"p95_ms":0.702717,"max_ms":0.702747},"wall_ms_including_warmup":5.14692,"payload_gbps":95.6987,"rw_gbps":191.397}
+
+GPU ALU burst (20 x 34.36 GF): disp min=17.63 p50=18.50 mean=18.38 max=18.52 ms | span=367.5 ms wall=386.2 ms | span=1.87 TFLOP/s best_disp=1.95 TFLOP/s min/mean=0.959
+GPU ALU sustained (32 x 2 disp): wall=1183.8 ms sum_gpu=1181.6 ms (gpu/wall=0.998) | sub min=36.12 p50=37.01 p95=37.03 max=37.05 ms | wall=1.86 TFLOP/s
+--- MEMORY PROBE: cpu [active] step=100 max=16384 ---
+MEM[cpu] cpu=0 MiB | app=265.4/1024.0 MiB (Low) priv=264.6 ws=134.6
+MEM[cpu] cpu=100 MiB ok=1 (13.5 ms) | app=365.6/1024.0 MiB (Low) priv=364.8 ws=234.7
+MEM[cpu] cpu=200 MiB ok=1 (40.3 ms) | app=465.8/1024.0 MiB (Low) priv=465.0 ws=334.7
+MEM[cpu] cpu=300 MiB ok=1 (27.5 ms) | app=566.0/1024.0 MiB (Medium) priv=565.2 ws=434.7
+MEM[cpu] cpu=400 MiB ok=1 (20.8 ms) | app=666.3/1024.0 MiB (Medium) priv=665.5 ws=534.7
+MEM[cpu] cpu=500 MiB ok=1 (235.0 ms) | app=765.3/1024.0 MiB (Medium) priv=764.5 ws=607.5
+MEM[cpu] cpu=600 MiB ok=1 (128.7 ms) | app=865.5/1024.0 MiB (Medium) priv=864.7 ws=477.9
+MEM[cpu] cpu=700 MiB ok=1 (74.1 ms) | app=965.7/1024.0 MiB (High) priv=964.9 ws=526.0
+MEM[cpu] cpu=726 MiB ok=1 (14.8 ms) | app=991.8/1024.0 MiB (High) priv=991.0 ws=552.1
+MEM[cpu] STOP reason=near_app_limit peak_cpu=726 MiB | freed: app=264.3/1024.0 MiB (Low) priv=263.5 ws=2.1
+--- MEMORY PROBE: d3d11 [active] step=100 max=16384 cpu_hold=0 ---
+MEM[d3d11] cpu=0 gpu=128 MiB copy=0.726 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=397.1/1024.0 MiB (Low) priv=395.3 ws=8.6 | LOCAL[use=130.3 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=228 MiB copy=0.726 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=461.3/1024.0 MiB (Low) priv=459.5 ws=8.6 | LOCAL[use=230.4 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=328 MiB copy=0.734 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=525.5/1024.0 MiB (Medium) priv=523.7 ws=8.6 | LOCAL[use=330.5 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=428 MiB copy=0.729 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=625.8/1024.0 MiB (Medium) priv=624.0 ws=44.7 | LOCAL[use=430.7 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=528 MiB copy=0.728 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=727.1/1024.0 MiB (Medium) priv=724.3 ws=144.9 | LOCAL[use=530.8 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=628 MiB copy=0.729 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=827.4/1024.0 MiB (Medium) priv=824.7 ws=245.0 | LOCAL[use=630.9 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=728 MiB copy=0.730 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=927.8/1024.0 MiB (High) priv=925.0 ws=345.1 | LOCAL[use=731.1 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=792 MiB copy=0.731 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=991.0/1024.0 MiB (High) priv=988.2 ws=408.3 | LOCAL[use=795.1 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] STOP reason=near_app_limit peak_gpu=792 MiB base_copy=0.725885 ms | freed: app=312.0/1024.0 MiB (Low) priv=310.2 ws=307.1 | LOCAL[use=0.0 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+--- MEMORY PROBE: d3d12 [active] step=100 max=16384 cpu_hold=0 ---
+MEM[d3d12] cpu=0 gpu=128 MiB copy=0.683 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=313.7/1024.0 MiB (Low) priv=311.9 ws=308.5 | LOCAL[use=129.8 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=228 MiB copy=0.711 ms (1.04x) stg=3 hr=0x00000000 rem=0x00000000 | app=313.7/1024.0 MiB (Low) priv=311.9 ws=308.5 | LOCAL[use=230.0 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=328 MiB copy=0.713 ms (1.04x) stg=3 hr=0x00000000 rem=0x00000000 | app=377.9/1024.0 MiB (Low) priv=376.1 ws=308.6 | LOCAL[use=330.1 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=428 MiB copy=0.712 ms (1.04x) stg=3 hr=0x00000000 rem=0x00000000 | app=478.2/1024.0 MiB (Low) priv=476.5 ws=344.6 | LOCAL[use=430.2 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=528 MiB copy=0.710 ms (1.04x) stg=3 hr=0x00000000 rem=0x00000000 | app=579.6/1024.0 MiB (Medium) priv=576.8 ws=444.8 | LOCAL[use=530.4 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=628 MiB copy=0.712 ms (1.04x) stg=3 hr=0x00000000 rem=0x00000000 | app=679.9/1024.0 MiB (Medium) priv=677.1 ws=544.9 | LOCAL[use=630.5 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=728 MiB copy=0.713 ms (1.04x) stg=3 hr=0x00000000 rem=0x00000000 | app=780.2/1024.0 MiB (Medium) priv=777.4 ws=633.6 | LOCAL[use=730.6 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=828 MiB copy=0.714 ms (1.04x) stg=3 hr=0x00000000 rem=0x00000000 | app=880.6/1024.0 MiB (Medium) priv=877.8 ws=681.7 | LOCAL[use=830.8 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=928 MiB copy=0.715 ms (1.05x) stg=3 hr=0x00000000 rem=0x00000000 | app=980.9/1024.0 MiB (High) priv=978.1 ws=598.0 | LOCAL[use=930.9 bud=1085.9 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] STOP reason=near_app_limit peak_gpu=928 MiB base_copy=0.683378 ms | freed: app=446.6/1024.0 MiB (Low) priv=444.8 ws=441.4 | LOCAL[use=0.0 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+--- MEMORY PROBE: mixed_d3d11 [active] step=100 max=16384 cpu_hold=400 ---
+MEM[mixed_d3d11] held cpu=400 MiB | app=846.5/1024.0 MiB (Medium) priv=845.7 ws=303.2
+MEM[mixed_d3d11] cpu=400 gpu=128 MiB copy=0.726 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=851.1/1024.0 MiB (Medium) priv=849.3 ws=437.4 | LOCAL[use=130.3 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=400 gpu=228 MiB copy=0.723 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=851.1/1024.0 MiB (Medium) priv=849.3 ws=437.5 | LOCAL[use=230.4 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=400 gpu=328 MiB copy=0.720 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=851.1/1024.0 MiB (Medium) priv=849.3 ws=437.5 | LOCAL[use=330.5 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=400 gpu=428 MiB copy=0.730 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=915.3/1024.0 MiB (Medium) priv=913.5 ws=473.6 | LOCAL[use=430.7 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=400 gpu=504 MiB copy=0.725 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=980.5/1024.0 MiB (High) priv=977.7 ws=549.7 | LOCAL[use=506.8 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] STOP reason=near_app_limit peak_gpu=504 MiB base_copy=0.726165 ms | freed: app=346.6/1024.0 MiB (Low) priv=344.8 ws=140.8 | LOCAL[use=0.0 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+--- MEMORY PROBE: mixed_d3d12 [active] step=100 max=16384 cpu_hold=400 ---
+MEM[mixed_d3d12] held cpu=400 MiB | app=746.5/1024.0 MiB (Medium) priv=745.7 ws=540.9
+MEM[mixed_d3d12] cpu=400 gpu=128 MiB copy=0.683 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=750.7/1024.0 MiB (Medium) priv=748.9 ws=543.8 | LOCAL[use=129.8 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=400 gpu=228 MiB copy=0.717 ms (1.05x) stg=3 hr=0x00000000 rem=0x00000000 | app=750.7/1024.0 MiB (Medium) priv=748.9 ws=543.8 | LOCAL[use=230.0 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=400 gpu=328 MiB copy=0.712 ms (1.04x) stg=3 hr=0x00000000 rem=0x00000000 | app=814.9/1024.0 MiB (Medium) priv=813.1 ws=543.8 | LOCAL[use=330.1 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=400 gpu=428 MiB copy=0.714 ms (1.04x) stg=3 hr=0x00000000 rem=0x00000000 | app=915.2/1024.0 MiB (Medium) priv=913.4 ws=579.9 | LOCAL[use=430.2 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=400 gpu=504 MiB copy=0.710 ms (1.04x) stg=3 hr=0x00000000 rem=0x00000000 | app=980.4/1024.0 MiB (High) priv=977.6 ws=644.0 | LOCAL[use=506.4 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] STOP reason=near_app_limit peak_gpu=504 MiB base_copy=0.683429 ms | freed: app=349.2/1024.0 MiB (Low) priv=347.4 ws=179.3 | LOCAL[use=0.0 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+INPUT: Waiting until >=15 s with no input for idle phase...
+INPUT: Entering idle phase (ms_since_last_input=15057 ms, last=CoreWindowKey)
+=== PHASE: IDLE (ms_since_input=15057) ===
+--- CPU BENCHMARK [idle] (ms_since_input=15058) ---
+CPU serial latency: int=83.87 ms (476.9 Mchain/s) fp=52.42 ms (476.9 Mchain/s)
+CPU set pinning: total=8 pin_ok=8 distinct_observed_procs=8
+CPU ALU  1T: 10.81 Gops/s (scale 1.00x, 10.81 Gops/s/T) distinct_procs=2
+CPU ALU  2T: 21.85 Gops/s (scale 2.02x, 10.92 Gops/s/T) distinct_procs=3
+CPU ALU  4T: 39.69 Gops/s (scale 3.67x, 9.92 Gops/s/T) distinct_procs=5
+CPU ALU  6T: 44.37 Gops/s (scale 4.10x, 7.39 Gops/s/T) distinct_procs=7
+CPU ALU  8T: 45.43 Gops/s (scale 4.20x, 5.68 Gops/s/T) distinct_procs=8
+--- CPU MEMORY & CACHE BANDWIDTH [idle] (ms_since_input=16614) ---
+BW  1T: L2_copy=44.7 GB/s (0.56ms/25MB) | DRAM_copy=3.44 GB/s (7.23ms/25MB) | DRAM_read=4.80 | NT_write=18.65 | NT_copy=3.59 GB/s (6.94ms/25MB)
+BW  2T: L2_copy=90.2 GB/s (0.28ms/25MB) | DRAM_copy=4.87 GB/s (5.12ms/25MB) | DRAM_read=7.80 | NT_write=18.78 | NT_copy=4.90 GB/s (5.08ms/25MB)
+BW  4T: L2_copy=147.2 GB/s (0.17ms/25MB) | DRAM_copy=6.53 GB/s (3.81ms/25MB) | DRAM_read=11.99 | NT_write=18.83 | NT_copy=6.11 GB/s (4.07ms/25MB)
+BW  6T: L2_copy=172.4 GB/s (0.14ms/25MB) | DRAM_copy=7.61 GB/s (3.27ms/25MB) | DRAM_read=13.20 | NT_write=18.88 | NT_copy=7.44 GB/s (3.35ms/25MB)
+BW  8T: L2_copy=163.6 GB/s (0.15ms/25MB) | DRAM_copy=7.01 GB/s (3.55ms/25MB) | DRAM_read=12.58 | NT_write=18.91 | NT_copy=6.81 GB/s (3.65ms/25MB)
+--- GPU BANDWIDTH & TIME-SHARE BENCHMARK [idle] (ms_since_input=22634) ---
+GPU UPLOAD->DEFAULT (64 MiB): {"iters":6,"gpu_stats":{"min_ms":1.80936,"p50_ms":1.83154,"mean_ms":1.82689,"p95_ms":1.83944,"max_ms":1.84382},"wall_ms_including_warmup":15.1364,"payload_gbps":36.7339,"rw_gbps":73.4679,"ms_per_25mb":0.677847,"cpu_1t_fill_gbps":17.8575,"cpu_1t_read_gbps":3.34681e+06}
+
+GPU DEFAULT->DEFAULT (64 MiB): {"iters":8,"gpu_stats":{"min_ms":1.67007,"p50_ms":1.70309,"mean_ms":1.69762,"p95_ms":1.70601,"max_ms":1.70703},"wall_ms_including_warmup":17.2342,"payload_gbps":39.5312,"rw_gbps":79.0625,"ms_per_25mb":0.629882}
+
+GPU UMA CUSTOM_WB_L0: {"create_hr":"0x00000000","map_hr":"0x00000000","cpu_1t_fill_gbps":17.4897,"cpu_1t_read_gbps":2.25266e+06,"gpu_copy":{"iters":6,"gpu_stats":{"min_ms":1.8137,"p50_ms":1.86139,"mean_ms":1.84135,"p95_ms":1.8628,"max_ms":1.86399},"wall_ms_including_warmup":15.2078,"payload_gbps":36.4454,"rw_gbps":72.8908,"ms_per_25mb":0.683214}}
+
+GPU COMPUTE COPY (64 MiB): {"iters":6,"gpu_stats":{"min_ms":1.70182,"p50_ms":1.70576,"mean_ms":1.70653,"p95_ms":1.70783,"max_ms":1.71503},"wall_ms_including_warmup":12.2723,"payload_gbps":39.3248,"rw_gbps":78.6497}
+
+GPU ALU burst (20 x 34.36 GF): disp min=17.65 p50=18.52 mean=18.40 max=18.54 ms | span=367.9 ms wall=386.6 ms | span=1.87 TFLOP/s best_disp=1.95 TFLOP/s min/mean=0.960
+GPU ALU sustained (32 x 2 disp): wall=1187.1 ms sum_gpu=1184.8 ms (gpu/wall=0.998) | sub min=36.18 p50=37.06 p95=37.08 max=37.08 ms | wall=1.85 TFLOP/s
+--- MEMORY PROBE: cpu [idle] step=100 max=16384 ---
+MEM[cpu] cpu=0 MiB | app=265.7/1024.0 MiB (Low) priv=265.0 ws=134.0
+MEM[cpu] cpu=100 MiB ok=1 (25.4 ms) | app=365.9/1024.0 MiB (Low) priv=365.2 ws=234.0
+MEM[cpu] cpu=200 MiB ok=1 (25.4 ms) | app=466.2/1024.0 MiB (Low) priv=465.4 ws=334.1
+MEM[cpu] cpu=300 MiB ok=1 (47.9 ms) | app=566.4/1024.0 MiB (Medium) priv=565.6 ws=434.1
+MEM[cpu] cpu=400 MiB ok=1 (86.7 ms) | app=666.6/1024.0 MiB (Medium) priv=665.9 ws=534.1
+MEM[cpu] cpu=500 MiB ok=1 (87.2 ms) | app=766.8/1024.0 MiB (Medium) priv=766.1 ws=634.1
+MEM[cpu] cpu=600 MiB ok=1 (114.6 ms) | app=867.0/1024.0 MiB (Medium) priv=866.3 ws=734.1
+MEM[cpu] cpu=700 MiB ok=1 (117.7 ms) | app=967.2/1024.0 MiB (High) priv=966.5 ws=823.2
+MEM[cpu] cpu=724 MiB ok=1 (269.4 ms) | app=991.3/1024.0 MiB (High) priv=990.6 ws=785.1
+MEM[cpu] STOP reason=near_app_limit peak_cpu=724 MiB | freed: app=264.5/1024.0 MiB (Low) priv=263.8 ws=93.8
+--- MEMORY PROBE: d3d11 [idle] step=100 max=16384 cpu_hold=0 ---
+MEM[d3d11] cpu=0 gpu=128 MiB copy=1.745 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=397.5/1024.0 MiB (Low) priv=395.8 ws=98.1 | LOCAL[use=130.3 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=228 MiB copy=1.741 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=461.7/1024.0 MiB (Low) priv=460.0 ws=98.1 | LOCAL[use=230.4 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=328 MiB copy=1.725 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=525.9/1024.0 MiB (Medium) priv=524.2 ws=98.1 | LOCAL[use=330.5 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=428 MiB copy=1.738 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=626.2/1024.0 MiB (Medium) priv=624.5 ws=134.2 | LOCAL[use=430.7 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=528 MiB copy=1.730 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=727.6/1024.0 MiB (Medium) priv=724.8 ws=234.4 | LOCAL[use=530.8 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=628 MiB copy=1.728 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=827.9/1024.0 MiB (Medium) priv=825.2 ws=334.5 | LOCAL[use=630.9 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=728 MiB copy=1.743 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=928.2/1024.0 MiB (High) priv=925.5 ws=434.6 | LOCAL[use=731.1 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=791 MiB copy=1.726 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=991.2/1024.0 MiB (High) priv=988.5 ws=497.5 | LOCAL[use=795.1 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] STOP reason=near_app_limit peak_gpu=791 MiB base_copy=1.744501 ms | freed: app=312.3/1024.0 MiB (Low) priv=310.5 ws=307.3 | LOCAL[use=0.0 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+--- MEMORY PROBE: d3d12 [idle] step=100 max=16384 cpu_hold=0 ---
+MEM[d3d12] cpu=0 gpu=128 MiB copy=1.684 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=314.1/1024.0 MiB (Low) priv=312.4 ws=308.9 | LOCAL[use=129.8 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=228 MiB copy=1.713 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=314.1/1024.0 MiB (Low) priv=312.4 ws=308.9 | LOCAL[use=230.0 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=328 MiB copy=1.710 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=378.3/1024.0 MiB (Low) priv=376.6 ws=308.9 | LOCAL[use=330.1 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=428 MiB copy=1.714 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=478.6/1024.0 MiB (Low) priv=476.9 ws=345.0 | LOCAL[use=430.2 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=528 MiB copy=1.717 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=580.0/1024.0 MiB (Medium) priv=577.2 ws=445.1 | LOCAL[use=530.4 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=628 MiB copy=1.709 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=680.3/1024.0 MiB (Medium) priv=677.5 ws=545.2 | LOCAL[use=630.5 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=728 MiB copy=1.717 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=780.6/1024.0 MiB (Medium) priv=777.9 ws=645.4 | LOCAL[use=730.6 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=828 MiB copy=1.715 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=880.9/1024.0 MiB (Medium) priv=878.2 ws=745.5 | LOCAL[use=830.8 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=928 MiB copy=1.721 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=979.5/1024.0 MiB (High) priv=976.8 ws=770.8 | LOCAL[use=930.9 bud=1085.9 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] STOP reason=near_app_limit peak_gpu=928 MiB base_copy=1.684281 ms | freed: app=447.7/1024.0 MiB (Low) priv=446.0 ws=442.6 | LOCAL[use=0.0 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+--- MEMORY PROBE: mixed_d3d11 [idle] step=100 max=16384 cpu_hold=400 ---
+MEM[mixed_d3d11] held cpu=400 MiB | app=847.7/1024.0 MiB (Medium) priv=847.0 ws=723.8
+MEM[mixed_d3d11] cpu=400 gpu=128 MiB copy=1.769 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=850.3/1024.0 MiB (Medium) priv=848.6 ws=613.7 | LOCAL[use=130.3 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=400 gpu=228 MiB copy=1.777 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=850.4/1024.0 MiB (Medium) priv=848.6 ws=613.7 | LOCAL[use=230.4 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=400 gpu=328 MiB copy=1.765 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=850.4/1024.0 MiB (Medium) priv=848.7 ws=613.7 | LOCAL[use=330.5 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=400 gpu=428 MiB copy=1.757 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=914.6/1024.0 MiB (Medium) priv=912.8 ws=631.8 | LOCAL[use=430.7 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=400 gpu=505 MiB copy=1.760 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=979.8/1024.0 MiB (High) priv=977.0 ws=695.8 | LOCAL[use=508.8 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] STOP reason=near_app_limit peak_gpu=505 MiB base_copy=1.768551 ms | freed: app=348.5/1024.0 MiB (Low) priv=346.8 ws=213.3 | LOCAL[use=0.0 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+--- MEMORY PROBE: mixed_d3d12 [idle] step=100 max=16384 cpu_hold=400 ---
+MEM[mixed_d3d12] held cpu=400 MiB | app=748.5/1024.0 MiB (Medium) priv=747.8 ws=613.5
+MEM[mixed_d3d12] cpu=400 gpu=128 MiB copy=1.733 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=751.1/1024.0 MiB (Medium) priv=749.4 ws=598.8 | LOCAL[use=129.8 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=400 gpu=228 MiB copy=1.746 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=749.3/1024.0 MiB (Medium) priv=747.6 ws=597.1 | LOCAL[use=230.0 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=400 gpu=328 MiB copy=1.733 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=813.5/1024.0 MiB (Medium) priv=811.8 ws=597.1 | LOCAL[use=330.1 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=400 gpu=428 MiB copy=1.726 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=913.9/1024.0 MiB (Medium) priv=912.1 ws=633.2 | LOCAL[use=430.2 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=400 gpu=506 MiB copy=1.726 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=979.1/1024.0 MiB (High) priv=976.3 ws=697.2 | LOCAL[use=508.4 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] STOP reason=near_app_limit peak_gpu=506 MiB base_copy=1.732662 ms | freed: app=347.8/1024.0 MiB (Low) priv=346.1 ws=198.6 | LOCAL[use=0.0 bud=1209.6 res=0.0/638.4] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+=== PROFILER COMPLETED ===

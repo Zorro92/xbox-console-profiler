@@ -1,0 +1,520 @@
+================================================================
+xbox-console-profiler starting
+Config: source=defaults states=both wake_mode=auto idle_wait_sec=15 mem_step_mib=100 mem_max_mib=16384 mixed_cpu_mib=0 allow_over_limit=0 tests=[cpu=1,bw=1,gpu=1,mem_cpu=1,mem_d3d11=1,mem_d3d12=1,mem_mixed_d3d11=1,mem_mixed_d3d12=1]
+InputInjector available at startup: yes
+=== SYSTEM INFO ===
+Package: XboxConsoleProfiler.Expanded (Xbox Profiler (expandedResources)) v0.1.2.0 [Windows.Xbox 10.0.26100.9673]
+CPU: AuthenticAMD "Microsoft Xbox Series X CPU" native_procs=8 hw_conc=8 cpu_sets=8 alloc_to_target=0 avx=1 avx2=1 fma=1
+Initial memory: app=5.0/5120.0 MiB (Low) priv=4.2 ws=2.9
+Xbox extended pools: unavailable (hr=0x80070005)
+Adapter: SraKmd_arden (vid=0x1414) ded_vid=512.0 MiB shared=4096.0 MiB
+Initial DXGI memory: LOCAL[use=0.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+LIFECYCLE VisibilityChanged: visible
+D3D12 arch: UMA=1 CacheCoherentUMA=1 IsolatedMMU=0
+=== PHASE: ACTIVE (wake=InputInjector(Shift), ms_since_input=60) ===
+--- CPU BENCHMARK [active] (ms_since_input=60) ---
+CPU serial latency: int=69.62 ms (574.6 Mchain/s) fp=43.32 ms (577.1 Mchain/s)
+CPU set pinning: total=8 pin_ok=8 distinct_observed_procs=6
+CPU ALU  1T: 13.56 Gops/s (scale 1.00x, 13.56 Gops/s/T) distinct_procs=1
+CPU ALU  2T: 27.48 Gops/s (scale 2.03x, 13.74 Gops/s/T) distinct_procs=2
+CPU ALU  4T: 41.65 Gops/s (scale 3.07x, 10.41 Gops/s/T) distinct_procs=4
+CPU ALU  6T: 42.79 Gops/s (scale 3.16x, 7.13 Gops/s/T) distinct_procs=6
+CPU ALU  8T: 37.38 Gops/s (scale 2.76x, 4.67 Gops/s/T) distinct_procs=6
+--- CPU MEMORY & CACHE BANDWIDTH [active] (ms_since_input=1747) ---
+BW  1T: L2_copy=57.1 GB/s (0.44ms/25MB) | DRAM_copy=15.38 GB/s (1.62ms/25MB) | DRAM_read=16.55 | NT_write=34.08 | NT_copy=14.58 GB/s (1.71ms/25MB)
+BW  2T: L2_copy=114.3 GB/s (0.22ms/25MB) | DRAM_copy=24.30 GB/s (1.02ms/25MB) | DRAM_read=30.08 | NT_write=33.86 | NT_copy=24.18 GB/s (1.03ms/25MB)
+BW  4T: L2_copy=164.4 GB/s (0.15ms/25MB) | DRAM_copy=25.54 GB/s (0.98ms/25MB) | DRAM_read=36.03 | NT_write=34.10 | NT_copy=25.52 GB/s (0.98ms/25MB)
+BW  6T: L2_copy=157.3 GB/s (0.16ms/25MB) | DRAM_copy=25.47 GB/s (0.98ms/25MB) | DRAM_read=35.27 | NT_write=33.95 | NT_copy=25.25 GB/s (0.99ms/25MB)
+BW  8T: L2_copy=138.9 GB/s (0.18ms/25MB) | DRAM_copy=25.12 GB/s (0.99ms/25MB) | DRAM_read=34.38 | NT_write=33.81 | NT_copy=24.69 GB/s (1.01ms/25MB)
+--- GPU BANDWIDTH & TIME-SHARE BENCHMARK [active] (ms_since_input=4237) ---
+GPU UPLOAD->DEFAULT (64 MiB): {"iters":6,"gpu_stats":{"min_ms":0.849965,"p50_ms":0.860311,"mean_ms":0.859462,"p95_ms":0.861714,"max_ms":0.866165},"wall_ms_including_warmup":7.07113,"payload_gbps":78.0824,"rw_gbps":156.165,"ms_per_25mb":0.318894,"cpu_1t_fill_gbps":33.4433,"cpu_1t_read_gbps":3.34681e+06}
+
+GPU DEFAULT->DEFAULT (64 MiB): {"iters":8,"gpu_stats":{"min_ms":0.460672,"p50_ms":0.467649,"mean_ms":0.466877,"p95_ms":0.468812,"max_ms":0.470135},"wall_ms_including_warmup":4.7554,"payload_gbps":143.74,"rw_gbps":287.48,"ms_per_25mb":0.17323}
+
+GPU UMA CUSTOM_WB_L0: {"create_hr":"0x00000000","map_hr":"0x00000000","cpu_1t_fill_gbps":33.8222,"cpu_1t_read_gbps":3.34681e+06,"gpu_copy":{"iters":6,"gpu_stats":{"min_ms":0.849283,"p50_ms":0.865684,"mean_ms":0.862556,"p95_ms":0.869173,"max_ms":0.869213},"wall_ms_including_warmup":7.08281,"payload_gbps":77.8023,"rw_gbps":155.605,"ms_per_25mb":0.320042}}
+
+GPU COMPUTE COPY (64 MiB): {"iters":6,"gpu_stats":{"min_ms":0.467609,"p50_ms":0.470536,"mean_ms":0.469841,"p95_ms":0.470617,"max_ms":0.471619},"wall_ms_including_warmup":3.41125,"payload_gbps":142.833,"rw_gbps":285.666}
+
+GPU ALU burst (20 x 34.36 GF): disp min=2.91 p50=3.05 mean=3.03 max=3.07 ms | span=60.6 ms wall=63.8 ms | span=11.34 TFLOP/s best_disp=11.82 TFLOP/s min/mean=0.959
+GPU ALU sustained (32 x 2 disp): wall=195.7 ms sum_gpu=195.2 ms (gpu/wall=0.998) | sub min=5.96 p50=6.10 p95=6.12 max=6.13 ms | wall=11.24 TFLOP/s
+--- MEMORY PROBE: cpu [active] step=100 max=16384 ---
+MEM[cpu] cpu=0 MiB | app=267.3/5120.0 MiB (Low) priv=266.6 ws=136.6
+MEM[cpu] cpu=100 MiB ok=1 (13.8 ms) | app=367.6/5120.0 MiB (Low) priv=366.8 ws=236.6
+MEM[cpu] cpu=200 MiB ok=1 (10.5 ms) | app=467.8/5120.0 MiB (Low) priv=467.0 ws=336.7
+MEM[cpu] cpu=300 MiB ok=1 (10.1 ms) | app=568.0/5120.0 MiB (Low) priv=567.2 ws=436.7
+MEM[cpu] cpu=400 MiB ok=1 (10.2 ms) | app=668.2/5120.0 MiB (Low) priv=667.4 ws=536.7
+MEM[cpu] cpu=500 MiB ok=1 (10.0 ms) | app=768.4/5120.0 MiB (Low) priv=767.6 ws=636.7
+MEM[cpu] cpu=600 MiB ok=1 (10.7 ms) | app=868.6/5120.0 MiB (Low) priv=867.8 ws=736.7
+MEM[cpu] cpu=700 MiB ok=1 (9.9 ms) | app=968.8/5120.0 MiB (Low) priv=968.1 ws=836.7
+MEM[cpu] cpu=800 MiB ok=1 (10.0 ms) | app=1069.1/5120.0 MiB (Low) priv=1068.3 ws=936.7
+MEM[cpu] cpu=900 MiB ok=1 (10.0 ms) | app=1169.3/5120.0 MiB (Low) priv=1168.5 ws=1036.7
+MEM[cpu] cpu=1000 MiB ok=1 (10.0 ms) | app=1269.5/5120.0 MiB (Low) priv=1268.7 ws=1136.7
+MEM[cpu] cpu=1100 MiB ok=1 (10.0 ms) | app=1369.7/5120.0 MiB (Low) priv=1368.9 ws=1236.8
+MEM[cpu] cpu=1200 MiB ok=1 (10.0 ms) | app=1469.9/5120.0 MiB (Low) priv=1469.1 ws=1336.8
+MEM[cpu] cpu=1300 MiB ok=1 (10.0 ms) | app=1570.1/5120.0 MiB (Low) priv=1569.3 ws=1436.8
+MEM[cpu] cpu=1400 MiB ok=1 (10.0 ms) | app=1670.3/5120.0 MiB (Low) priv=1669.5 ws=1536.8
+MEM[cpu] cpu=1500 MiB ok=1 (10.0 ms) | app=1770.5/5120.0 MiB (Low) priv=1769.8 ws=1636.8
+MEM[cpu] cpu=1600 MiB ok=1 (10.0 ms) | app=1870.8/5120.0 MiB (Low) priv=1870.0 ws=1736.8
+MEM[cpu] cpu=1700 MiB ok=1 (10.0 ms) | app=1971.0/5120.0 MiB (Low) priv=1970.2 ws=1836.8
+MEM[cpu] cpu=1800 MiB ok=1 (9.9 ms) | app=2071.2/5120.0 MiB (Low) priv=2070.4 ws=1936.8
+MEM[cpu] cpu=1900 MiB ok=1 (10.0 ms) | app=2171.4/5120.0 MiB (Low) priv=2170.6 ws=2036.8
+MEM[cpu] cpu=2000 MiB ok=1 (10.0 ms) | app=2271.6/5120.0 MiB (Low) priv=2270.8 ws=2136.8
+MEM[cpu] cpu=2100 MiB ok=1 (9.9 ms) | app=2371.8/5120.0 MiB (Low) priv=2371.0 ws=2236.8
+MEM[cpu] cpu=2200 MiB ok=1 (9.9 ms) | app=2472.0/5120.0 MiB (Low) priv=2471.2 ws=2336.8
+MEM[cpu] cpu=2300 MiB ok=1 (9.9 ms) | app=2572.2/5120.0 MiB (Medium) priv=2571.4 ws=2436.9
+MEM[cpu] cpu=2400 MiB ok=1 (10.1 ms) | app=2672.4/5120.0 MiB (Medium) priv=2671.7 ws=2536.9
+MEM[cpu] cpu=2500 MiB ok=1 (9.9 ms) | app=2772.7/5120.0 MiB (Medium) priv=2771.9 ws=2636.9
+MEM[cpu] cpu=2600 MiB ok=1 (9.9 ms) | app=2872.9/5120.0 MiB (Medium) priv=2872.1 ws=2736.9
+MEM[cpu] cpu=2700 MiB ok=1 (10.0 ms) | app=2973.1/5120.0 MiB (Medium) priv=2972.3 ws=2836.9
+MEM[cpu] cpu=2800 MiB ok=1 (9.9 ms) | app=3073.3/5120.0 MiB (Medium) priv=3072.5 ws=2936.9
+MEM[cpu] cpu=2900 MiB ok=1 (9.9 ms) | app=3173.5/5120.0 MiB (Medium) priv=3172.7 ws=3036.9
+MEM[cpu] cpu=3000 MiB ok=1 (10.0 ms) | app=3273.7/5120.0 MiB (Medium) priv=3272.9 ws=3136.9
+MEM[cpu] cpu=3100 MiB ok=1 (9.9 ms) | app=3373.9/5120.0 MiB (Medium) priv=3373.1 ws=3236.9
+MEM[cpu] cpu=3200 MiB ok=1 (10.0 ms) | app=3474.1/5120.0 MiB (Medium) priv=3473.3 ws=3336.9
+MEM[cpu] cpu=3300 MiB ok=1 (10.0 ms) | app=3574.3/5120.0 MiB (Medium) priv=3573.6 ws=3436.9
+MEM[cpu] cpu=3400 MiB ok=1 (10.0 ms) | app=3674.6/5120.0 MiB (Medium) priv=3673.8 ws=3536.9
+MEM[cpu] cpu=3500 MiB ok=1 (10.0 ms) | app=3774.8/5120.0 MiB (Medium) priv=3774.0 ws=3636.9
+MEM[cpu] cpu=3600 MiB ok=1 (10.0 ms) | app=3875.0/5120.0 MiB (Medium) priv=3874.2 ws=3736.9
+MEM[cpu] cpu=3700 MiB ok=1 (9.9 ms) | app=3975.2/5120.0 MiB (Medium) priv=3974.4 ws=3837.0
+MEM[cpu] cpu=3800 MiB ok=1 (9.9 ms) | app=4075.4/5120.0 MiB (Medium) priv=4074.6 ws=3937.0
+MEM[cpu] cpu=3900 MiB ok=1 (10.0 ms) | app=4175.6/5120.0 MiB (Medium) priv=4174.8 ws=4037.0
+MEM[cpu] cpu=4000 MiB ok=1 (10.0 ms) | app=4275.8/5120.0 MiB (Medium) priv=4275.0 ws=4137.0
+MEM[cpu] cpu=4100 MiB ok=1 (9.9 ms) | app=4376.0/5120.0 MiB (Medium) priv=4375.2 ws=4237.0
+MEM[cpu] cpu=4200 MiB ok=1 (10.0 ms) | app=4476.2/5120.0 MiB (Medium) priv=4475.4 ws=4337.0
+MEM[cpu] cpu=4300 MiB ok=1 (10.1 ms) | app=4576.5/5120.0 MiB (Medium) priv=4575.7 ws=4437.0
+MEM[cpu] cpu=4400 MiB ok=1 (9.9 ms) | app=4676.7/5120.0 MiB (High) priv=4675.9 ws=4537.0
+MEM[cpu] cpu=4500 MiB ok=1 (10.0 ms) | app=4776.9/5120.0 MiB (High) priv=4776.1 ws=4637.0
+MEM[cpu] cpu=4600 MiB ok=1 (9.9 ms) | app=4877.1/5120.0 MiB (High) priv=4876.3 ws=4737.0
+MEM[cpu] cpu=4700 MiB ok=1 (9.9 ms) | app=4977.3/5120.0 MiB (High) priv=4976.5 ws=4837.0
+MEM[cpu] cpu=4800 MiB ok=1 (9.9 ms) | app=5077.5/5120.0 MiB (High) priv=5076.7 ws=4937.0
+MEM[cpu] STOP reason=near_app_limit peak_cpu=4800 MiB | freed: app=264.6/5120.0 MiB (Low) priv=263.8 ws=133.9
+--- MEMORY PROBE: d3d11 [active] step=100 max=16384 cpu_hold=0 ---
+MEM[d3d11] cpu=0 gpu=128 MiB copy=0.478 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=397.7/5120.0 MiB (Low) priv=395.9 ws=265.9 | LOCAL[use=130.3 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=228 MiB copy=0.486 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=461.9/5120.0 MiB (Low) priv=460.1 ws=265.9 | LOCAL[use=230.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=328 MiB copy=0.476 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=526.1/5120.0 MiB (Low) priv=524.3 ws=265.9 | LOCAL[use=330.5 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=428 MiB copy=0.484 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=626.4/5120.0 MiB (Low) priv=624.6 ws=366.0 | LOCAL[use=430.7 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=528 MiB copy=0.472 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=727.8/5120.0 MiB (Low) priv=725.0 ws=466.2 | LOCAL[use=530.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=628 MiB copy=0.475 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=828.1/5120.0 MiB (Low) priv=825.3 ws=566.3 | LOCAL[use=630.9 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=728 MiB copy=0.473 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=928.4/5120.0 MiB (Low) priv=925.6 ws=666.4 | LOCAL[use=731.1 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=828 MiB copy=0.473 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=1028.7/5120.0 MiB (Low) priv=1025.9 ws=766.6 | LOCAL[use=831.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=928 MiB copy=0.471 ms (0.98x) stg=3 hr=0x00000000 rem=0x00000000 | app=1129.1/5120.0 MiB (Low) priv=1126.3 ws=866.7 | LOCAL[use=931.3 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=1028 MiB copy=0.473 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=1230.4/5120.0 MiB (Low) priv=1226.6 ws=966.8 | LOCAL[use=1031.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=1128 MiB copy=0.473 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=1330.7/5120.0 MiB (Low) priv=1326.9 ws=1066.9 | LOCAL[use=1131.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=1228 MiB copy=0.473 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=1431.0/5120.0 MiB (Low) priv=1427.2 ws=1167.1 | LOCAL[use=1231.7 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=1328 MiB copy=0.473 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=1531.4/5120.0 MiB (Low) priv=1527.6 ws=1267.2 | LOCAL[use=1331.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=1428 MiB copy=0.472 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=1631.7/5120.0 MiB (Low) priv=1627.9 ws=1367.3 | LOCAL[use=1432.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=1528 MiB copy=0.478 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=1733.0/5120.0 MiB (Low) priv=1728.2 ws=1467.4 | LOCAL[use=1532.1 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=1628 MiB copy=0.474 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=1833.3/5120.0 MiB (Low) priv=1828.5 ws=1567.6 | LOCAL[use=1632.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=1728 MiB copy=0.472 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=1933.6/5120.0 MiB (Low) priv=1928.8 ws=1667.7 | LOCAL[use=1732.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=1828 MiB copy=0.473 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=2034.0/5120.0 MiB (Low) priv=2029.2 ws=1767.8 | LOCAL[use=1832.5 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=1928 MiB copy=0.473 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=2134.3/5120.0 MiB (Low) priv=2129.5 ws=1867.9 | LOCAL[use=1932.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=2028 MiB copy=0.475 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=2235.6/5120.0 MiB (Low) priv=2229.8 ws=1968.1 | LOCAL[use=2032.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=2128 MiB copy=0.474 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=2335.9/5120.0 MiB (Low) priv=2330.1 ws=2068.2 | LOCAL[use=2132.9 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=2228 MiB copy=0.474 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=2436.2/5120.0 MiB (Low) priv=2430.4 ws=2168.3 | LOCAL[use=2233.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=2328 MiB copy=0.472 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=2536.6/5120.0 MiB (Low) priv=2530.8 ws=2268.4 | LOCAL[use=2333.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=2428 MiB copy=0.476 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=2636.9/5120.0 MiB (Medium) priv=2631.1 ws=2368.6 | LOCAL[use=2433.3 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=2528 MiB copy=0.472 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=2738.2/5120.0 MiB (Medium) priv=2731.4 ws=2468.7 | LOCAL[use=2533.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=2628 MiB copy=0.473 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=2838.5/5120.0 MiB (Medium) priv=2831.7 ws=2568.8 | LOCAL[use=2633.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=2728 MiB copy=0.473 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=2938.8/5120.0 MiB (Medium) priv=2932.0 ws=2668.9 | LOCAL[use=2733.7 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=2828 MiB copy=0.471 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=3039.2/5120.0 MiB (Medium) priv=3032.4 ws=2769.1 | LOCAL[use=2833.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=2928 MiB copy=0.473 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=3139.5/5120.0 MiB (Medium) priv=3132.7 ws=2869.2 | LOCAL[use=2934.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=3028 MiB copy=0.473 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=3239.8/5120.0 MiB (Medium) priv=3233.0 ws=2969.3 | LOCAL[use=3034.1 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=3128 MiB copy=0.474 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=3341.1/5120.0 MiB (Medium) priv=3333.3 ws=3069.4 | LOCAL[use=3134.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=3228 MiB copy=0.473 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=3441.4/5120.0 MiB (Medium) priv=3433.6 ws=3169.6 | LOCAL[use=3234.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=3328 MiB copy=0.473 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=3541.8/5120.0 MiB (Medium) priv=3534.0 ws=3269.7 | LOCAL[use=3334.5 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=3428 MiB copy=0.473 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=3642.1/5120.0 MiB (Medium) priv=3634.3 ws=3369.8 | LOCAL[use=3434.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=3528 MiB copy=0.474 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=3742.4/5120.0 MiB (Medium) priv=3734.6 ws=3469.9 | LOCAL[use=3534.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=3628 MiB copy=0.472 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=3843.7/5120.0 MiB (Medium) priv=3834.9 ws=3570.1 | LOCAL[use=3634.9 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=3728 MiB copy=0.473 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=3944.1/5120.0 MiB (Medium) priv=3935.3 ws=3670.2 | LOCAL[use=3735.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=3828 MiB copy=0.474 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=4044.4/5120.0 MiB (Medium) priv=4035.6 ws=3770.3 | LOCAL[use=3835.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=3928 MiB copy=0.474 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=4144.7/5120.0 MiB (Medium) priv=4135.9 ws=3870.4 | LOCAL[use=3935.3 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=4028 MiB copy=0.473 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=4245.0/5120.0 MiB (Medium) priv=4236.2 ws=3970.6 | LOCAL[use=4035.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=4128 MiB copy=0.472 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=4346.3/5120.0 MiB (Medium) priv=4336.5 ws=4070.7 | LOCAL[use=4135.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=4128 MiB copy=0.000 ms (0.00x) stg=1 hr=0x8007000E rem=0x00000000 | app=4410.5/5120.0 MiB (Medium) priv=4400.7 ws=4070.7 | LOCAL[use=4135.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] STOP reason=step_failed_stage1_0x8007000E peak_gpu=4128 MiB base_copy=0.477915 ms | freed: app=449.5/5120.0 MiB (Low) priv=447.7 ws=445.4 | LOCAL[use=0.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+--- MEMORY PROBE: d3d12 [active] step=100 max=16384 cpu_hold=0 ---
+MEM[d3d12] cpu=0 gpu=128 MiB copy=0.463 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=451.2/5120.0 MiB (Low) priv=449.4 ws=446.9 | LOCAL[use=129.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=228 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=451.3/5120.0 MiB (Low) priv=449.5 ws=446.9 | LOCAL[use=230.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=328 MiB copy=0.471 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=451.3/5120.0 MiB (Low) priv=449.5 ws=446.9 | LOCAL[use=330.1 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=428 MiB copy=0.469 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=515.4/5120.0 MiB (Low) priv=513.6 ws=446.9 | LOCAL[use=430.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=528 MiB copy=0.470 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=616.8/5120.0 MiB (Low) priv=614.0 ws=547.1 | LOCAL[use=530.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=628 MiB copy=0.541 ms (1.17x) stg=3 hr=0x00000000 rem=0x00000000 | app=717.1/5120.0 MiB (Low) priv=714.3 ws=647.2 | LOCAL[use=630.5 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=728 MiB copy=0.484 ms (1.05x) stg=3 hr=0x00000000 rem=0x00000000 | app=817.4/5120.0 MiB (Low) priv=814.6 ws=747.3 | LOCAL[use=730.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=828 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=917.7/5120.0 MiB (Low) priv=914.9 ws=847.5 | LOCAL[use=830.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=928 MiB copy=0.471 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1018.1/5120.0 MiB (Low) priv=1015.3 ws=947.6 | LOCAL[use=930.9 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=1028 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1119.4/5120.0 MiB (Low) priv=1115.6 ws=1047.7 | LOCAL[use=1031.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=1128 MiB copy=0.471 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1219.7/5120.0 MiB (Low) priv=1215.9 ws=1147.8 | LOCAL[use=1131.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=1228 MiB copy=0.471 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1320.0/5120.0 MiB (Low) priv=1316.2 ws=1248.0 | LOCAL[use=1231.3 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=1328 MiB copy=0.469 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=1420.3/5120.0 MiB (Low) priv=1416.5 ws=1348.1 | LOCAL[use=1331.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=1428 MiB copy=0.471 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1520.7/5120.0 MiB (Low) priv=1516.9 ws=1448.2 | LOCAL[use=1431.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=1528 MiB copy=0.469 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=1622.0/5120.0 MiB (Low) priv=1617.2 ws=1548.3 | LOCAL[use=1531.7 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=1628 MiB copy=0.469 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=1722.3/5120.0 MiB (Low) priv=1717.5 ws=1648.5 | LOCAL[use=1631.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=1728 MiB copy=0.471 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1822.6/5120.0 MiB (Low) priv=1817.8 ws=1748.6 | LOCAL[use=1732.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=1828 MiB copy=0.471 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1922.9/5120.0 MiB (Low) priv=1918.1 ws=1848.7 | LOCAL[use=1832.1 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=1928 MiB copy=0.469 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=2023.3/5120.0 MiB (Low) priv=2018.5 ws=1948.8 | LOCAL[use=1932.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=2028 MiB copy=0.471 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=2124.6/5120.0 MiB (Low) priv=2118.8 ws=2049.0 | LOCAL[use=2032.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=2128 MiB copy=0.469 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=2224.9/5120.0 MiB (Low) priv=2219.1 ws=2149.1 | LOCAL[use=2132.5 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=2228 MiB copy=0.476 ms (1.03x) stg=3 hr=0x00000000 rem=0x00000000 | app=2325.2/5120.0 MiB (Low) priv=2319.4 ws=2249.2 | LOCAL[use=2232.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=2328 MiB copy=0.469 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=2425.6/5120.0 MiB (Low) priv=2419.8 ws=2349.3 | LOCAL[use=2332.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=2428 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=2525.9/5120.0 MiB (Low) priv=2520.1 ws=2449.5 | LOCAL[use=2432.9 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=2528 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=2627.2/5120.0 MiB (Medium) priv=2620.4 ws=2549.6 | LOCAL[use=2533.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=2628 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=2727.5/5120.0 MiB (Medium) priv=2720.7 ws=2649.7 | LOCAL[use=2633.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=2728 MiB copy=0.471 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=2827.8/5120.0 MiB (Medium) priv=2821.0 ws=2749.8 | LOCAL[use=2733.3 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=2828 MiB copy=0.471 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=2928.2/5120.0 MiB (Medium) priv=2921.4 ws=2850.0 | LOCAL[use=2833.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=2928 MiB copy=0.469 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=3028.5/5120.0 MiB (Medium) priv=3021.7 ws=2950.1 | LOCAL[use=2933.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=3028 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=3128.8/5120.0 MiB (Medium) priv=3122.0 ws=3050.2 | LOCAL[use=3033.7 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=3128 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=3230.1/5120.0 MiB (Medium) priv=3222.3 ws=3150.3 | LOCAL[use=3133.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=3228 MiB copy=0.470 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=3330.4/5120.0 MiB (Medium) priv=3322.6 ws=3250.5 | LOCAL[use=3234.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=3328 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=3430.8/5120.0 MiB (Medium) priv=3423.0 ws=3350.6 | LOCAL[use=3334.1 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=3428 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=3531.1/5120.0 MiB (Medium) priv=3523.3 ws=3450.7 | LOCAL[use=3434.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=3528 MiB copy=0.473 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=3631.4/5120.0 MiB (Medium) priv=3623.6 ws=3550.8 | LOCAL[use=3534.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=3628 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=3732.7/5120.0 MiB (Medium) priv=3723.9 ws=3651.0 | LOCAL[use=3634.5 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=3728 MiB copy=0.472 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=3833.1/5120.0 MiB (Medium) priv=3824.3 ws=3751.1 | LOCAL[use=3734.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=3828 MiB copy=0.471 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=3933.4/5120.0 MiB (Medium) priv=3924.6 ws=3851.2 | LOCAL[use=3834.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=3928 MiB copy=0.469 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=4033.7/5120.0 MiB (Medium) priv=4024.9 ws=3951.3 | LOCAL[use=3934.9 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=4028 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=4134.0/5120.0 MiB (Medium) priv=4125.2 ws=4051.5 | LOCAL[use=4035.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=4128 MiB copy=0.469 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=4235.3/5120.0 MiB (Medium) priv=4225.5 ws=4151.6 | LOCAL[use=4135.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=4128 MiB copy=0.000 ms (0.00x) stg=1 hr=0x8007000E rem=0x00000000 | app=4299.5/5120.0 MiB (Medium) priv=4289.7 ws=4151.6 | LOCAL[use=4135.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] STOP reason=step_failed_stage1_0x8007000E peak_gpu=4128 MiB base_copy=0.462596 ms | freed: app=348.1/5120.0 MiB (Low) priv=346.3 ws=344.2 | LOCAL[use=0.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+--- MEMORY PROBE: mixed_d3d11 [active] step=100 max=16384 cpu_hold=1000 ---
+MEM[mixed_d3d11] held cpu=1000 MiB | app=1349.2/5120.0 MiB (Low) priv=1348.4 ws=1344.3
+MEM[mixed_d3d11] cpu=1000 gpu=128 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=1352.9/5120.0 MiB (Low) priv=1351.1 ws=1346.7 | LOCAL[use=130.3 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=228 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=1352.9/5120.0 MiB (Low) priv=1351.1 ws=1346.7 | LOCAL[use=230.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=328 MiB copy=0.472 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=1417.1/5120.0 MiB (Low) priv=1415.3 ws=1346.7 | LOCAL[use=330.5 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=428 MiB copy=0.471 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=1481.3/5120.0 MiB (Low) priv=1479.5 ws=1346.7 | LOCAL[use=430.7 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=528 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=1582.7/5120.0 MiB (Low) priv=1579.9 ws=1446.9 | LOCAL[use=530.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=628 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=1683.0/5120.0 MiB (Low) priv=1680.2 ws=1547.0 | LOCAL[use=630.9 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=728 MiB copy=0.475 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=1782.3/5120.0 MiB (Low) priv=1779.5 ws=1646.1 | LOCAL[use=731.1 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=828 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=1882.6/5120.0 MiB (Low) priv=1879.8 ws=1746.2 | LOCAL[use=831.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=928 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=1983.0/5120.0 MiB (Low) priv=1980.2 ws=1846.4 | LOCAL[use=931.3 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=1028 MiB copy=0.480 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=2084.3/5120.0 MiB (Low) priv=2080.5 ws=1946.5 | LOCAL[use=1031.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=1128 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=2184.6/5120.0 MiB (Low) priv=2180.8 ws=2046.7 | LOCAL[use=1131.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=1228 MiB copy=0.472 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=2285.0/5120.0 MiB (Low) priv=2281.2 ws=2146.8 | LOCAL[use=1231.7 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=1328 MiB copy=0.472 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=2385.3/5120.0 MiB (Low) priv=2381.5 ws=2246.9 | LOCAL[use=1331.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=1428 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=2485.6/5120.0 MiB (Low) priv=2481.8 ws=2347.1 | LOCAL[use=1432.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=1528 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=2587.0/5120.0 MiB (Medium) priv=2582.2 ws=2447.2 | LOCAL[use=1532.1 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=1628 MiB copy=0.475 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=2687.3/5120.0 MiB (Medium) priv=2682.5 ws=2547.3 | LOCAL[use=1632.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=1728 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=2787.6/5120.0 MiB (Medium) priv=2782.8 ws=2647.5 | LOCAL[use=1732.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=1828 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=2887.9/5120.0 MiB (Medium) priv=2883.1 ws=2747.6 | LOCAL[use=1832.5 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=1928 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=2988.3/5120.0 MiB (Medium) priv=2983.5 ws=2847.7 | LOCAL[use=1932.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=2028 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3089.6/5120.0 MiB (Medium) priv=3083.8 ws=2947.9 | LOCAL[use=2032.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=2128 MiB copy=0.475 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3189.9/5120.0 MiB (Medium) priv=3184.1 ws=3048.0 | LOCAL[use=2132.9 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=2228 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3290.3/5120.0 MiB (Medium) priv=3284.5 ws=3148.1 | LOCAL[use=2233.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=2328 MiB copy=0.472 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3390.6/5120.0 MiB (Medium) priv=3384.8 ws=3248.3 | LOCAL[use=2333.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=2428 MiB copy=0.472 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3490.9/5120.0 MiB (Medium) priv=3485.1 ws=3348.4 | LOCAL[use=2433.3 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=2528 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3592.3/5120.0 MiB (Medium) priv=3585.5 ws=3448.5 | LOCAL[use=2533.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=2628 MiB copy=0.475 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3692.6/5120.0 MiB (Medium) priv=3685.8 ws=3548.7 | LOCAL[use=2633.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=2728 MiB copy=0.472 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3792.9/5120.0 MiB (Medium) priv=3786.1 ws=3648.8 | LOCAL[use=2733.7 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=2828 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3893.3/5120.0 MiB (Medium) priv=3886.5 ws=3749.0 | LOCAL[use=2833.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=2928 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3993.6/5120.0 MiB (Medium) priv=3986.8 ws=3849.1 | LOCAL[use=2934.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=3028 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=4094.0/5120.0 MiB (Medium) priv=4087.2 ws=3949.3 | LOCAL[use=3034.1 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=3128 MiB copy=0.475 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=4195.3/5120.0 MiB (Medium) priv=4187.5 ws=4049.4 | LOCAL[use=3134.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=3228 MiB copy=0.472 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=4295.7/5120.0 MiB (Medium) priv=4287.9 ws=4149.6 | LOCAL[use=3234.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=3328 MiB copy=0.472 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=4396.0/5120.0 MiB (Medium) priv=4388.2 ws=4249.7 | LOCAL[use=3334.5 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=3428 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=4496.4/5120.0 MiB (Medium) priv=4488.6 ws=4349.9 | LOCAL[use=3434.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=3528 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=4596.7/5120.0 MiB (Medium) priv=4588.9 ws=4450.0 | LOCAL[use=3534.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=3628 MiB copy=0.472 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=4698.0/5120.0 MiB (High) priv=4689.2 ws=4550.1 | LOCAL[use=3634.9 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=3728 MiB copy=0.472 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=4798.3/5120.0 MiB (High) priv=4789.6 ws=4650.3 | LOCAL[use=3735.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=3828 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=4898.7/5120.0 MiB (High) priv=4889.9 ws=4750.4 | LOCAL[use=3835.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=3928 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=4999.0/5120.0 MiB (High) priv=4990.2 ws=4850.6 | LOCAL[use=3935.3 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=4016 MiB copy=0.471 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=5063.2/5120.0 MiB (High) priv=5054.4 ws=4914.6 | LOCAL[use=4023.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=4040 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=5087.4/5120.0 MiB (High) priv=5078.6 ws=4938.7 | LOCAL[use=4047.5 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] STOP reason=near_app_limit peak_gpu=4040 MiB base_copy=0.472581 ms | freed: app=460.4/5120.0 MiB (Low) priv=458.6 ws=456.2 | LOCAL[use=0.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+--- MEMORY PROBE: mixed_d3d12 [active] step=100 max=16384 cpu_hold=1000 ---
+MEM[mixed_d3d12] held cpu=1000 MiB | app=1461.6/5120.0 MiB (Low) priv=1460.8 ws=1456.4
+MEM[mixed_d3d12] cpu=1000 gpu=128 MiB copy=0.463 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=1465.7/5120.0 MiB (Low) priv=1463.9 ws=1459.2 | LOCAL[use=129.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=228 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1465.7/5120.0 MiB (Low) priv=1463.9 ws=1459.2 | LOCAL[use=230.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=328 MiB copy=0.470 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=1465.7/5120.0 MiB (Low) priv=1463.9 ws=1459.2 | LOCAL[use=330.1 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=428 MiB copy=0.472 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1529.9/5120.0 MiB (Low) priv=1528.1 ws=1459.2 | LOCAL[use=430.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=528 MiB copy=0.473 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1631.2/5120.0 MiB (Low) priv=1628.4 ws=1559.4 | LOCAL[use=530.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=628 MiB copy=0.468 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=1731.6/5120.0 MiB (Low) priv=1728.8 ws=1659.5 | LOCAL[use=630.5 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=728 MiB copy=0.471 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1831.9/5120.0 MiB (Low) priv=1829.1 ws=1759.6 | LOCAL[use=730.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=828 MiB copy=0.470 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=1932.2/5120.0 MiB (Low) priv=1929.4 ws=1859.8 | LOCAL[use=830.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=928 MiB copy=0.475 ms (1.03x) stg=3 hr=0x00000000 rem=0x00000000 | app=2032.5/5120.0 MiB (Low) priv=2029.7 ws=1959.9 | LOCAL[use=930.9 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=1028 MiB copy=0.469 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=2133.9/5120.0 MiB (Low) priv=2130.1 ws=2060.0 | LOCAL[use=1031.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=1128 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=2234.2/5120.0 MiB (Low) priv=2230.4 ws=2160.1 | LOCAL[use=1131.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=1228 MiB copy=0.469 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=2334.5/5120.0 MiB (Low) priv=2330.7 ws=2260.3 | LOCAL[use=1231.3 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=1328 MiB copy=0.470 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=2434.8/5120.0 MiB (Low) priv=2431.0 ws=2360.4 | LOCAL[use=1331.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=1428 MiB copy=0.471 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=2535.1/5120.0 MiB (Low) priv=2531.3 ws=2460.5 | LOCAL[use=1431.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=1528 MiB copy=0.470 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=2636.5/5120.0 MiB (Medium) priv=2631.7 ws=2560.6 | LOCAL[use=1531.7 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=1628 MiB copy=0.477 ms (1.03x) stg=3 hr=0x00000000 rem=0x00000000 | app=2736.8/5120.0 MiB (Medium) priv=2732.0 ws=2660.8 | LOCAL[use=1631.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=1728 MiB copy=0.476 ms (1.03x) stg=3 hr=0x00000000 rem=0x00000000 | app=2837.1/5120.0 MiB (Medium) priv=2832.3 ws=2760.9 | LOCAL[use=1732.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=1828 MiB copy=0.472 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=2937.4/5120.0 MiB (Medium) priv=2932.6 ws=2861.0 | LOCAL[use=1832.1 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=1928 MiB copy=0.471 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=3037.8/5120.0 MiB (Medium) priv=3033.0 ws=2961.1 | LOCAL[use=1932.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=2028 MiB copy=0.469 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=3139.1/5120.0 MiB (Medium) priv=3133.3 ws=3061.3 | LOCAL[use=2032.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=2128 MiB copy=0.470 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=3239.4/5120.0 MiB (Medium) priv=3233.6 ws=3161.4 | LOCAL[use=2132.5 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=2228 MiB copy=0.474 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=3339.7/5120.0 MiB (Medium) priv=3333.9 ws=3261.5 | LOCAL[use=2232.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=2328 MiB copy=0.470 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=3440.1/5120.0 MiB (Medium) priv=3434.3 ws=3361.6 | LOCAL[use=2332.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=2428 MiB copy=0.470 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=3540.4/5120.0 MiB (Medium) priv=3534.6 ws=3461.8 | LOCAL[use=2432.9 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=2528 MiB copy=0.469 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=3641.7/5120.0 MiB (Medium) priv=3634.9 ws=3561.9 | LOCAL[use=2533.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=2628 MiB copy=0.484 ms (1.04x) stg=3 hr=0x00000000 rem=0x00000000 | app=3742.0/5120.0 MiB (Medium) priv=3735.2 ws=3662.0 | LOCAL[use=2633.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=2728 MiB copy=0.414 ms (0.89x) stg=3 hr=0x00000000 rem=0x00000000 | app=3842.3/5120.0 MiB (Medium) priv=3835.5 ws=3726.1 | LOCAL[use=2733.3 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=2828 MiB copy=0.408 ms (0.88x) stg=3 hr=0x00000000 rem=0x00000000 | app=3942.7/5120.0 MiB (Medium) priv=3935.9 ws=3862.3 | LOCAL[use=2833.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=2928 MiB copy=0.451 ms (0.97x) stg=3 hr=0x00000000 rem=0x00000000 | app=4043.0/5120.0 MiB (Medium) priv=4036.2 ws=3962.4 | LOCAL[use=2933.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=3028 MiB copy=0.418 ms (0.90x) stg=3 hr=0x00000000 rem=0x00000000 | app=4143.3/5120.0 MiB (Medium) priv=4136.5 ws=4062.5 | LOCAL[use=3033.7 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=3128 MiB copy=0.405 ms (0.87x) stg=3 hr=0x00000000 rem=0x00000000 | app=4244.6/5120.0 MiB (Medium) priv=4236.8 ws=4162.7 | LOCAL[use=3133.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=3228 MiB copy=0.409 ms (0.88x) stg=3 hr=0x00000000 rem=0x00000000 | app=4344.9/5120.0 MiB (Medium) priv=4337.2 ws=4262.8 | LOCAL[use=3234.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=3328 MiB copy=0.413 ms (0.89x) stg=3 hr=0x00000000 rem=0x00000000 | app=4445.3/5120.0 MiB (Medium) priv=4437.5 ws=4362.9 | LOCAL[use=3334.1 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=3428 MiB copy=0.406 ms (0.88x) stg=3 hr=0x00000000 rem=0x00000000 | app=4545.6/5120.0 MiB (Medium) priv=4537.8 ws=4463.0 | LOCAL[use=3434.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=3528 MiB copy=0.410 ms (0.88x) stg=3 hr=0x00000000 rem=0x00000000 | app=4645.9/5120.0 MiB (High) priv=4638.1 ws=4563.2 | LOCAL[use=3534.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=3628 MiB copy=0.415 ms (0.90x) stg=3 hr=0x00000000 rem=0x00000000 | app=4747.2/5120.0 MiB (High) priv=4738.4 ws=4663.3 | LOCAL[use=3634.5 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=3728 MiB copy=0.416 ms (0.90x) stg=3 hr=0x00000000 rem=0x00000000 | app=4847.6/5120.0 MiB (High) priv=4838.8 ws=4763.4 | LOCAL[use=3734.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=3828 MiB copy=0.408 ms (0.88x) stg=3 hr=0x00000000 rem=0x00000000 | app=4947.9/5120.0 MiB (High) priv=4939.1 ws=4863.5 | LOCAL[use=3834.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=3928 MiB copy=0.410 ms (0.89x) stg=3 hr=0x00000000 rem=0x00000000 | app=5048.2/5120.0 MiB (High) priv=5039.4 ws=4963.7 | LOCAL[use=3934.9 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=3967 MiB copy=0.412 ms (0.89x) stg=3 hr=0x00000000 rem=0x00000000 | app=5088.3/5120.0 MiB (High) priv=5079.5 ws=5003.7 | LOCAL[use=3975.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] STOP reason=near_app_limit peak_gpu=3967 MiB base_copy=0.463278 ms | freed: app=488.3/5120.0 MiB (Low) priv=486.5 ws=484.2 | LOCAL[use=0.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+INPUT: Waiting until >=15 s with no input for idle phase...
+INPUT: Entering idle phase (ms_since_last_input=15034 ms, last=CoreWindowKey)
+=== PHASE: IDLE (ms_since_input=15033) ===
+--- CPU BENCHMARK [idle] (ms_since_input=15034) ---
+CPU serial latency: int=67.02 ms (596.8 Mchain/s) fp=41.89 ms (596.8 Mchain/s)
+CPU set pinning: total=8 pin_ok=8 distinct_observed_procs=6
+CPU ALU  1T: 13.75 Gops/s (scale 1.00x, 13.75 Gops/s/T) distinct_procs=1
+CPU ALU  2T: 27.47 Gops/s (scale 2.00x, 13.73 Gops/s/T) distinct_procs=2
+CPU ALU  4T: 41.66 Gops/s (scale 3.03x, 10.41 Gops/s/T) distinct_procs=4
+CPU ALU  6T: 42.76 Gops/s (scale 3.11x, 7.13 Gops/s/T) distinct_procs=6
+CPU ALU  8T: 38.60 Gops/s (scale 2.81x, 4.83 Gops/s/T) distinct_procs=6
+--- CPU MEMORY & CACHE BANDWIDTH [idle] (ms_since_input=16723) ---
+BW  1T: L2_copy=56.7 GB/s (0.44ms/25MB) | DRAM_copy=14.89 GB/s (1.67ms/25MB) | DRAM_read=16.50 | NT_write=34.15 | NT_copy=14.27 GB/s (1.74ms/25MB)
+BW  2T: L2_copy=114.4 GB/s (0.22ms/25MB) | DRAM_copy=24.15 GB/s (1.03ms/25MB) | DRAM_read=29.86 | NT_write=34.36 | NT_copy=23.68 GB/s (1.05ms/25MB)
+BW  4T: L2_copy=166.3 GB/s (0.15ms/25MB) | DRAM_copy=25.20 GB/s (0.99ms/25MB) | DRAM_read=35.76 | NT_write=33.59 | NT_copy=23.85 GB/s (1.04ms/25MB)
+BW  6T: L2_copy=156.7 GB/s (0.16ms/25MB) | DRAM_copy=23.69 GB/s (1.05ms/25MB) | DRAM_read=33.57 | NT_write=33.53 | NT_copy=24.10 GB/s (1.03ms/25MB)
+BW  8T: L2_copy=140.5 GB/s (0.18ms/25MB) | DRAM_copy=24.87 GB/s (1.00ms/25MB) | DRAM_read=34.23 | NT_write=34.10 | NT_copy=24.81 GB/s (1.00ms/25MB)
+--- GPU BANDWIDTH & TIME-SHARE BENCHMARK [idle] (ms_since_input=23430) ---
+GPU UPLOAD->DEFAULT (64 MiB): {"iters":6,"gpu_stats":{"min_ms":0.859068,"p50_ms":0.861995,"mean_ms":0.862269,"p95_ms":0.864441,"max_ms":0.866206},"wall_ms_including_warmup":7.08823,"payload_gbps":77.8282,"rw_gbps":155.656,"ms_per_25mb":0.319935,"cpu_1t_fill_gbps":33.6475,"cpu_1t_read_gbps":3.34681e+06}
+
+GPU DEFAULT->DEFAULT (64 MiB): {"iters":8,"gpu_stats":{"min_ms":0.461313,"p50_ms":0.46781,"mean_ms":0.467449,"p95_ms":0.470055,"max_ms":0.470576},"wall_ms_including_warmup":4.77629,"payload_gbps":143.564,"rw_gbps":287.128,"ms_per_25mb":0.173442}
+
+GPU UMA CUSTOM_WB_L0: {"create_hr":"0x00000000","map_hr":"0x00000000","cpu_1t_fill_gbps":33.8446,"cpu_1t_read_gbps":3.34681e+06,"gpu_copy":{"iters":6,"gpu_stats":{"min_ms":0.847358,"p50_ms":0.862476,"mean_ms":0.859676,"p95_ms":0.862556,"max_ms":0.864241},"wall_ms_including_warmup":7.0487,"payload_gbps":78.063,"rw_gbps":156.126,"ms_per_25mb":0.318973}}
+
+GPU COMPUTE COPY (64 MiB): {"iters":6,"gpu_stats":{"min_ms":0.470376,"p50_ms":0.471218,"mean_ms":0.471044,"p95_ms":0.471459,"max_ms":0.471779},"wall_ms_including_warmup":3.43733,"payload_gbps":142.468,"rw_gbps":284.937}
+
+GPU ALU burst (20 x 34.36 GF): disp min=2.92 p50=3.05 mean=3.04 max=3.06 ms | span=60.8 ms wall=64.0 ms | span=11.29 TFLOP/s best_disp=11.79 TFLOP/s min/mean=0.958
+GPU ALU sustained (32 x 2 disp): wall=195.5 ms sum_gpu=195.0 ms (gpu/wall=0.998) | sub min=5.95 p50=6.10 p95=6.12 max=6.12 ms | wall=11.25 TFLOP/s
+--- MEMORY PROBE: cpu [idle] step=100 max=16384 ---
+MEM[cpu] cpu=0 MiB | app=270.4/5120.0 MiB (Low) priv=269.7 ws=139.7
+MEM[cpu] cpu=100 MiB ok=1 (11.6 ms) | app=370.6/5120.0 MiB (Low) priv=369.9 ws=239.7
+MEM[cpu] cpu=200 MiB ok=1 (12.2 ms) | app=470.8/5120.0 MiB (Low) priv=470.1 ws=339.7
+MEM[cpu] cpu=300 MiB ok=1 (9.9 ms) | app=571.0/5120.0 MiB (Low) priv=570.3 ws=439.7
+MEM[cpu] cpu=400 MiB ok=1 (10.1 ms) | app=671.3/5120.0 MiB (Low) priv=670.5 ws=539.7
+MEM[cpu] cpu=500 MiB ok=1 (10.3 ms) | app=771.5/5120.0 MiB (Low) priv=770.7 ws=639.7
+MEM[cpu] cpu=600 MiB ok=1 (10.1 ms) | app=871.7/5120.0 MiB (Low) priv=870.9 ws=739.7
+MEM[cpu] cpu=700 MiB ok=1 (10.0 ms) | app=971.9/5120.0 MiB (Low) priv=971.2 ws=839.7
+MEM[cpu] cpu=800 MiB ok=1 (10.1 ms) | app=1072.1/5120.0 MiB (Low) priv=1071.4 ws=939.7
+MEM[cpu] cpu=900 MiB ok=1 (10.5 ms) | app=1171.3/5120.0 MiB (Low) priv=1170.5 ws=1038.6
+MEM[cpu] cpu=1000 MiB ok=1 (13.2 ms) | app=1268.3/5120.0 MiB (Low) priv=1267.5 ws=1135.6
+MEM[cpu] cpu=1100 MiB ok=1 (13.2 ms) | app=1368.5/5120.0 MiB (Low) priv=1367.7 ws=1235.6
+MEM[cpu] cpu=1200 MiB ok=1 (13.1 ms) | app=1468.7/5120.0 MiB (Low) priv=1468.0 ws=1335.6
+MEM[cpu] cpu=1300 MiB ok=1 (13.2 ms) | app=1568.9/5120.0 MiB (Low) priv=1568.2 ws=1435.7
+MEM[cpu] cpu=1400 MiB ok=1 (13.1 ms) | app=1669.1/5120.0 MiB (Low) priv=1668.4 ws=1535.7
+MEM[cpu] cpu=1500 MiB ok=1 (13.2 ms) | app=1769.4/5120.0 MiB (Low) priv=1768.6 ws=1635.7
+MEM[cpu] cpu=1600 MiB ok=1 (13.1 ms) | app=1869.6/5120.0 MiB (Low) priv=1868.8 ws=1735.7
+MEM[cpu] cpu=1700 MiB ok=1 (13.1 ms) | app=1969.8/5120.0 MiB (Low) priv=1969.1 ws=1835.7
+MEM[cpu] cpu=1800 MiB ok=1 (13.0 ms) | app=2070.0/5120.0 MiB (Low) priv=2069.3 ws=1935.7
+MEM[cpu] cpu=1900 MiB ok=1 (13.1 ms) | app=2170.2/5120.0 MiB (Low) priv=2169.5 ws=2035.7
+MEM[cpu] cpu=2000 MiB ok=1 (13.0 ms) | app=2270.4/5120.0 MiB (Low) priv=2269.7 ws=2135.7
+MEM[cpu] cpu=2100 MiB ok=1 (13.1 ms) | app=2370.6/5120.0 MiB (Low) priv=2369.9 ws=2235.7
+MEM[cpu] cpu=2200 MiB ok=1 (13.1 ms) | app=2470.8/5120.0 MiB (Low) priv=2470.1 ws=2335.8
+MEM[cpu] cpu=2300 MiB ok=1 (13.1 ms) | app=2571.1/5120.0 MiB (Medium) priv=2570.3 ws=2435.8
+MEM[cpu] cpu=2400 MiB ok=1 (13.1 ms) | app=2671.3/5120.0 MiB (Medium) priv=2670.5 ws=2535.8
+MEM[cpu] cpu=2500 MiB ok=1 (13.0 ms) | app=2771.5/5120.0 MiB (Medium) priv=2770.7 ws=2635.8
+MEM[cpu] cpu=2600 MiB ok=1 (13.1 ms) | app=2871.7/5120.0 MiB (Medium) priv=2871.0 ws=2735.8
+MEM[cpu] cpu=2700 MiB ok=1 (13.1 ms) | app=2971.9/5120.0 MiB (Medium) priv=2971.2 ws=2835.8
+MEM[cpu] cpu=2800 MiB ok=1 (13.0 ms) | app=3072.1/5120.0 MiB (Medium) priv=3071.4 ws=2935.8
+MEM[cpu] cpu=2900 MiB ok=1 (13.2 ms) | app=3172.4/5120.0 MiB (Medium) priv=3171.6 ws=3035.9
+MEM[cpu] cpu=3000 MiB ok=1 (13.5 ms) | app=3272.6/5120.0 MiB (Medium) priv=3271.8 ws=3135.9
+MEM[cpu] cpu=3100 MiB ok=1 (13.7 ms) | app=3372.8/5120.0 MiB (Medium) priv=3372.1 ws=3235.9
+MEM[cpu] cpu=3200 MiB ok=1 (13.8 ms) | app=3473.0/5120.0 MiB (Medium) priv=3472.3 ws=3335.9
+MEM[cpu] cpu=3300 MiB ok=1 (13.7 ms) | app=3573.2/5120.0 MiB (Medium) priv=3572.5 ws=3435.9
+MEM[cpu] cpu=3400 MiB ok=1 (13.8 ms) | app=3673.4/5120.0 MiB (Medium) priv=3672.7 ws=3535.9
+MEM[cpu] cpu=3500 MiB ok=1 (13.8 ms) | app=3773.6/5120.0 MiB (Medium) priv=3772.9 ws=3635.9
+MEM[cpu] cpu=3600 MiB ok=1 (13.8 ms) | app=3873.9/5120.0 MiB (Medium) priv=3873.1 ws=3735.9
+MEM[cpu] cpu=3700 MiB ok=1 (13.8 ms) | app=3974.1/5120.0 MiB (Medium) priv=3973.3 ws=3835.9
+MEM[cpu] cpu=3800 MiB ok=1 (13.8 ms) | app=4074.3/5120.0 MiB (Medium) priv=4073.6 ws=3935.9
+MEM[cpu] cpu=3900 MiB ok=1 (13.9 ms) | app=4174.5/5120.0 MiB (Medium) priv=4173.8 ws=4036.0
+MEM[cpu] cpu=4000 MiB ok=1 (13.8 ms) | app=4274.7/5120.0 MiB (Medium) priv=4274.0 ws=4136.0
+MEM[cpu] cpu=4100 MiB ok=1 (13.2 ms) | app=4374.9/5120.0 MiB (Medium) priv=4374.2 ws=4236.0
+MEM[cpu] cpu=4200 MiB ok=1 (13.2 ms) | app=4475.1/5120.0 MiB (Medium) priv=4474.4 ws=4336.0
+MEM[cpu] cpu=4300 MiB ok=1 (13.2 ms) | app=4575.4/5120.0 MiB (Medium) priv=4574.6 ws=4436.0
+MEM[cpu] cpu=4400 MiB ok=1 (13.2 ms) | app=4675.6/5120.0 MiB (High) priv=4674.9 ws=4536.0
+MEM[cpu] cpu=4500 MiB ok=1 (13.2 ms) | app=4775.8/5120.0 MiB (High) priv=4775.1 ws=4636.0
+MEM[cpu] cpu=4600 MiB ok=1 (13.3 ms) | app=4876.0/5120.0 MiB (High) priv=4875.3 ws=4736.0
+MEM[cpu] cpu=4700 MiB ok=1 (13.3 ms) | app=4976.2/5120.0 MiB (High) priv=4975.5 ws=4836.1
+MEM[cpu] cpu=4800 MiB ok=1 (13.2 ms) | app=5076.4/5120.0 MiB (High) priv=5075.7 ws=4936.1
+MEM[cpu] STOP reason=near_app_limit peak_cpu=4800 MiB | freed: app=266.3/5120.0 MiB (Low) priv=265.6 ws=135.7
+--- MEMORY PROBE: d3d11 [idle] step=100 max=16384 cpu_hold=0 ---
+MEM[d3d11] cpu=0 gpu=128 MiB copy=0.472 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=398.0/5120.0 MiB (Low) priv=396.3 ws=266.4 | LOCAL[use=130.3 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=228 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=462.2/5120.0 MiB (Low) priv=460.5 ws=266.4 | LOCAL[use=230.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=328 MiB copy=0.472 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=526.5/5120.0 MiB (Low) priv=524.7 ws=266.4 | LOCAL[use=330.5 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=428 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=626.8/5120.0 MiB (Low) priv=625.1 ws=302.5 | LOCAL[use=430.7 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=528 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=728.1/5120.0 MiB (Low) priv=725.4 ws=402.6 | LOCAL[use=530.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=628 MiB copy=0.477 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=828.5/5120.0 MiB (Low) priv=825.8 ws=502.8 | LOCAL[use=630.9 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=728 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=928.8/5120.0 MiB (Low) priv=926.1 ws=602.9 | LOCAL[use=731.1 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=828 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=1029.1/5120.0 MiB (Low) priv=1026.4 ws=703.0 | LOCAL[use=831.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=928 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=1129.5/5120.0 MiB (Low) priv=1126.7 ws=803.2 | LOCAL[use=931.3 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=1028 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=1230.8/5120.0 MiB (Low) priv=1227.1 ws=903.3 | LOCAL[use=1031.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=1128 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=1331.1/5120.0 MiB (Low) priv=1327.4 ws=1003.4 | LOCAL[use=1131.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=1228 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=1431.5/5120.0 MiB (Low) priv=1427.7 ws=1103.6 | LOCAL[use=1231.7 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=1328 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=1531.8/5120.0 MiB (Low) priv=1528.1 ws=1203.7 | LOCAL[use=1331.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=1428 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=1632.1/5120.0 MiB (Low) priv=1628.4 ws=1303.9 | LOCAL[use=1432.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=1528 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=1733.5/5120.0 MiB (Low) priv=1728.8 ws=1404.0 | LOCAL[use=1532.1 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=1628 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=1833.8/5120.0 MiB (Low) priv=1829.1 ws=1504.2 | LOCAL[use=1632.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=1728 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=1934.2/5120.0 MiB (Low) priv=1929.4 ws=1604.3 | LOCAL[use=1732.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=1828 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=2034.5/5120.0 MiB (Low) priv=2029.8 ws=1704.4 | LOCAL[use=1832.5 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=1928 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=2134.8/5120.0 MiB (Low) priv=2130.1 ws=1804.6 | LOCAL[use=1932.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=2028 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=2236.2/5120.0 MiB (Low) priv=2230.4 ws=1904.7 | LOCAL[use=2032.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=2128 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=2336.5/5120.0 MiB (Low) priv=2330.8 ws=2004.8 | LOCAL[use=2132.9 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=2228 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=2436.8/5120.0 MiB (Low) priv=2431.1 ws=2105.0 | LOCAL[use=2233.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=2328 MiB copy=0.472 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=2537.2/5120.0 MiB (Low) priv=2531.4 ws=2205.1 | LOCAL[use=2333.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=2428 MiB copy=0.478 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=2637.5/5120.0 MiB (Medium) priv=2631.8 ws=2305.3 | LOCAL[use=2433.3 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=2528 MiB copy=0.472 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=2738.8/5120.0 MiB (Medium) priv=2732.1 ws=2405.4 | LOCAL[use=2533.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=2628 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=2839.2/5120.0 MiB (Medium) priv=2832.4 ws=2505.5 | LOCAL[use=2633.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=2728 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=2939.5/5120.0 MiB (Medium) priv=2932.8 ws=2605.7 | LOCAL[use=2733.7 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=2828 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3039.9/5120.0 MiB (Medium) priv=3033.1 ws=2705.8 | LOCAL[use=2833.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=2928 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3140.2/5120.0 MiB (Medium) priv=3133.5 ws=2806.0 | LOCAL[use=2934.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=3028 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3240.5/5120.0 MiB (Medium) priv=3233.8 ws=2906.1 | LOCAL[use=3034.1 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=3128 MiB copy=0.472 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3341.9/5120.0 MiB (Medium) priv=3334.1 ws=3006.3 | LOCAL[use=3134.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=3228 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3442.2/5120.0 MiB (Medium) priv=3434.5 ws=3106.4 | LOCAL[use=3234.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=3328 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3542.5/5120.0 MiB (Medium) priv=3534.8 ws=3206.5 | LOCAL[use=3334.5 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=3428 MiB copy=0.472 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3642.9/5120.0 MiB (Medium) priv=3635.1 ws=3306.7 | LOCAL[use=3434.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=3528 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3743.2/5120.0 MiB (Medium) priv=3735.5 ws=3406.8 | LOCAL[use=3534.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=3628 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3844.5/5120.0 MiB (Medium) priv=3835.8 ws=3507.0 | LOCAL[use=3634.9 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=3728 MiB copy=0.472 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3944.9/5120.0 MiB (Medium) priv=3936.1 ws=3607.1 | LOCAL[use=3735.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=3828 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=4045.2/5120.0 MiB (Medium) priv=4036.5 ws=3707.2 | LOCAL[use=3835.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=3928 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=4145.5/5120.0 MiB (Medium) priv=4136.8 ws=3807.4 | LOCAL[use=3935.3 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=4028 MiB copy=0.471 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=4245.9/5120.0 MiB (Medium) priv=4237.1 ws=3907.5 | LOCAL[use=4035.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=4128 MiB copy=0.475 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=4347.2/5120.0 MiB (Medium) priv=4337.4 ws=4007.6 | LOCAL[use=4135.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] cpu=0 gpu=4128 MiB copy=0.000 ms (0.00x) stg=1 hr=0x8007000E rem=0x00000000 | app=4411.4/5120.0 MiB (Medium) priv=4401.6 ws=4007.6 | LOCAL[use=4135.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d11] STOP reason=step_failed_stage1_0x8007000E peak_gpu=4128 MiB base_copy=0.472261 ms | freed: app=350.6/5120.0 MiB (Low) priv=348.8 ws=346.9 | LOCAL[use=0.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+--- MEMORY PROBE: d3d12 [idle] step=100 max=16384 cpu_hold=0 ---
+MEM[d3d12] cpu=0 gpu=128 MiB copy=0.462 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=352.8/5120.0 MiB (Low) priv=351.1 ws=348.7 | LOCAL[use=129.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=228 MiB copy=0.469 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=352.8/5120.0 MiB (Low) priv=351.1 ws=348.7 | LOCAL[use=230.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=328 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=417.0/5120.0 MiB (Low) priv=415.3 ws=348.7 | LOCAL[use=330.1 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=428 MiB copy=0.474 ms (1.03x) stg=3 hr=0x00000000 rem=0x00000000 | app=481.2/5120.0 MiB (Low) priv=479.5 ws=348.7 | LOCAL[use=430.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=528 MiB copy=0.469 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=582.5/5120.0 MiB (Low) priv=579.8 ws=448.8 | LOCAL[use=530.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=628 MiB copy=0.471 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=682.8/5120.0 MiB (Low) priv=680.1 ws=549.0 | LOCAL[use=630.5 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=728 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=783.2/5120.0 MiB (Low) priv=780.4 ws=649.1 | LOCAL[use=730.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=828 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=883.5/5120.0 MiB (Low) priv=880.8 ws=749.2 | LOCAL[use=830.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=928 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=983.8/5120.0 MiB (Low) priv=981.1 ws=849.4 | LOCAL[use=930.9 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=1028 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1085.2/5120.0 MiB (Low) priv=1081.4 ws=949.5 | LOCAL[use=1031.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=1128 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1185.5/5120.0 MiB (Low) priv=1181.7 ws=1049.6 | LOCAL[use=1131.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=1228 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1285.8/5120.0 MiB (Low) priv=1282.1 ws=1149.7 | LOCAL[use=1231.3 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=1328 MiB copy=0.473 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1386.1/5120.0 MiB (Low) priv=1382.4 ws=1249.9 | LOCAL[use=1331.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=1428 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1486.5/5120.0 MiB (Low) priv=1482.7 ws=1350.0 | LOCAL[use=1431.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=1528 MiB copy=0.471 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1587.8/5120.0 MiB (Low) priv=1583.1 ws=1450.1 | LOCAL[use=1531.7 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=1628 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1688.1/5120.0 MiB (Low) priv=1683.4 ws=1550.3 | LOCAL[use=1631.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=1728 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1788.4/5120.0 MiB (Low) priv=1783.7 ws=1650.4 | LOCAL[use=1732.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=1828 MiB copy=0.469 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1888.8/5120.0 MiB (Low) priv=1884.0 ws=1750.5 | LOCAL[use=1832.1 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=1928 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1989.1/5120.0 MiB (Low) priv=1984.4 ws=1850.6 | LOCAL[use=1932.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=2028 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=2090.4/5120.0 MiB (Low) priv=2084.7 ws=1950.8 | LOCAL[use=2032.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=2128 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=2190.7/5120.0 MiB (Low) priv=2185.0 ws=2050.9 | LOCAL[use=2132.5 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=2228 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=2291.1/5120.0 MiB (Low) priv=2285.3 ws=2151.0 | LOCAL[use=2232.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=2328 MiB copy=0.483 ms (1.05x) stg=3 hr=0x00000000 rem=0x00000000 | app=2391.4/5120.0 MiB (Low) priv=2385.7 ws=2251.2 | LOCAL[use=2332.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=2428 MiB copy=0.450 ms (0.98x) stg=3 hr=0x00000000 rem=0x00000000 | app=2491.7/5120.0 MiB (Low) priv=2486.0 ws=2315.2 | LOCAL[use=2432.9 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=2528 MiB copy=0.420 ms (0.91x) stg=3 hr=0x00000000 rem=0x00000000 | app=2593.0/5120.0 MiB (Medium) priv=2586.3 ws=2451.4 | LOCAL[use=2533.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=2628 MiB copy=0.424 ms (0.92x) stg=3 hr=0x00000000 rem=0x00000000 | app=2693.4/5120.0 MiB (Medium) priv=2686.6 ws=2551.5 | LOCAL[use=2633.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=2728 MiB copy=0.424 ms (0.92x) stg=3 hr=0x00000000 rem=0x00000000 | app=2793.7/5120.0 MiB (Medium) priv=2786.9 ws=2651.7 | LOCAL[use=2733.3 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=2828 MiB copy=0.424 ms (0.92x) stg=3 hr=0x00000000 rem=0x00000000 | app=2894.0/5120.0 MiB (Medium) priv=2887.3 ws=2751.8 | LOCAL[use=2833.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=2928 MiB copy=0.422 ms (0.91x) stg=3 hr=0x00000000 rem=0x00000000 | app=2994.3/5120.0 MiB (Medium) priv=2987.6 ws=2851.9 | LOCAL[use=2933.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=3028 MiB copy=0.426 ms (0.92x) stg=3 hr=0x00000000 rem=0x00000000 | app=3094.6/5120.0 MiB (Medium) priv=3087.9 ws=2952.1 | LOCAL[use=3033.7 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=3128 MiB copy=0.420 ms (0.91x) stg=3 hr=0x00000000 rem=0x00000000 | app=3196.0/5120.0 MiB (Medium) priv=3188.2 ws=3052.2 | LOCAL[use=3133.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=3228 MiB copy=0.422 ms (0.91x) stg=3 hr=0x00000000 rem=0x00000000 | app=3296.3/5120.0 MiB (Medium) priv=3288.6 ws=3152.3 | LOCAL[use=3234.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=3328 MiB copy=0.419 ms (0.91x) stg=3 hr=0x00000000 rem=0x00000000 | app=3396.6/5120.0 MiB (Medium) priv=3388.9 ws=3252.4 | LOCAL[use=3334.1 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=3428 MiB copy=0.423 ms (0.92x) stg=3 hr=0x00000000 rem=0x00000000 | app=3496.9/5120.0 MiB (Medium) priv=3489.2 ws=3352.6 | LOCAL[use=3434.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=3528 MiB copy=0.420 ms (0.91x) stg=3 hr=0x00000000 rem=0x00000000 | app=3597.3/5120.0 MiB (Medium) priv=3589.5 ws=3452.7 | LOCAL[use=3534.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=3628 MiB copy=0.421 ms (0.91x) stg=3 hr=0x00000000 rem=0x00000000 | app=3698.6/5120.0 MiB (Medium) priv=3689.8 ws=3552.8 | LOCAL[use=3634.5 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=3728 MiB copy=0.419 ms (0.91x) stg=3 hr=0x00000000 rem=0x00000000 | app=3798.9/5120.0 MiB (Medium) priv=3790.2 ws=3652.9 | LOCAL[use=3734.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=3828 MiB copy=0.419 ms (0.91x) stg=3 hr=0x00000000 rem=0x00000000 | app=3899.2/5120.0 MiB (Medium) priv=3890.5 ws=3753.1 | LOCAL[use=3834.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=3928 MiB copy=0.422 ms (0.91x) stg=3 hr=0x00000000 rem=0x00000000 | app=3999.6/5120.0 MiB (Medium) priv=3990.8 ws=3853.2 | LOCAL[use=3934.9 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=4028 MiB copy=0.421 ms (0.91x) stg=3 hr=0x00000000 rem=0x00000000 | app=4099.9/5120.0 MiB (Medium) priv=4091.1 ws=3953.3 | LOCAL[use=4035.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=4128 MiB copy=0.422 ms (0.91x) stg=3 hr=0x00000000 rem=0x00000000 | app=4201.2/5120.0 MiB (Medium) priv=4191.5 ws=4053.4 | LOCAL[use=4135.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] cpu=0 gpu=4128 MiB copy=0.000 ms (0.00x) stg=1 hr=0x8007000E rem=0x00000000 | app=4265.4/5120.0 MiB (Medium) priv=4255.6 ws=4053.4 | LOCAL[use=4135.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[d3d12] STOP reason=step_failed_stage1_0x8007000E peak_gpu=4128 MiB base_copy=0.461634 ms | freed: app=349.7/5120.0 MiB (Low) priv=348.0 ws=346.0 | LOCAL[use=0.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+--- MEMORY PROBE: mixed_d3d11 [idle] step=100 max=16384 cpu_hold=1000 ---
+MEM[mixed_d3d11] held cpu=1000 MiB | app=1352.1/5120.0 MiB (Low) priv=1351.4 ws=1347.2
+MEM[mixed_d3d11] cpu=1000 gpu=128 MiB copy=0.475 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=1355.0/5120.0 MiB (Low) priv=1353.2 ws=1348.7 | LOCAL[use=130.3 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=228 MiB copy=0.471 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=1355.0/5120.0 MiB (Low) priv=1353.2 ws=1348.7 | LOCAL[use=230.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=328 MiB copy=0.471 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=1419.2/5120.0 MiB (Low) priv=1417.4 ws=1348.7 | LOCAL[use=330.5 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=428 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=1483.4/5120.0 MiB (Low) priv=1481.6 ws=1348.7 | LOCAL[use=430.7 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=528 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=1584.7/5120.0 MiB (Low) priv=1581.9 ws=1448.9 | LOCAL[use=530.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=628 MiB copy=0.479 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=1685.0/5120.0 MiB (Low) priv=1682.3 ws=1549.0 | LOCAL[use=630.9 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=728 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=1785.3/5120.0 MiB (Low) priv=1782.6 ws=1649.1 | LOCAL[use=731.1 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=828 MiB copy=0.475 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=1885.6/5120.0 MiB (Low) priv=1882.9 ws=1749.2 | LOCAL[use=831.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=928 MiB copy=0.472 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=1986.0/5120.0 MiB (Low) priv=1983.2 ws=1849.4 | LOCAL[use=931.3 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=1028 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=2087.3/5120.0 MiB (Low) priv=2083.6 ws=1949.5 | LOCAL[use=1031.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=1128 MiB copy=0.472 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=2187.6/5120.0 MiB (Low) priv=2183.9 ws=2049.6 | LOCAL[use=1131.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=1228 MiB copy=0.476 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=2288.0/5120.0 MiB (Low) priv=2284.2 ws=2149.8 | LOCAL[use=1231.7 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=1328 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=2388.3/5120.0 MiB (Low) priv=2384.6 ws=2249.9 | LOCAL[use=1331.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=1428 MiB copy=0.480 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=2488.6/5120.0 MiB (Low) priv=2484.9 ws=2350.0 | LOCAL[use=1432.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=1528 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=2589.9/5120.0 MiB (Medium) priv=2585.2 ws=2450.1 | LOCAL[use=1532.1 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=1628 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=2690.3/5120.0 MiB (Medium) priv=2685.5 ws=2550.3 | LOCAL[use=1632.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=1728 MiB copy=0.473 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=2790.6/5120.0 MiB (Medium) priv=2785.8 ws=2650.4 | LOCAL[use=1732.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=1828 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=2890.9/5120.0 MiB (Medium) priv=2886.2 ws=2750.5 | LOCAL[use=1832.5 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=1928 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=2991.2/5120.0 MiB (Medium) priv=2986.5 ws=2850.7 | LOCAL[use=1932.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=2028 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3092.6/5120.0 MiB (Medium) priv=3086.8 ws=2950.8 | LOCAL[use=2032.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=2128 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3192.9/5120.0 MiB (Medium) priv=3187.2 ws=3050.9 | LOCAL[use=2132.9 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=2228 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3293.2/5120.0 MiB (Medium) priv=3287.5 ws=3151.1 | LOCAL[use=2233.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=2328 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3393.5/5120.0 MiB (Medium) priv=3387.8 ws=3251.2 | LOCAL[use=2333.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=2428 MiB copy=0.473 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=3492.6/5120.0 MiB (Medium) priv=3486.8 ws=3350.1 | LOCAL[use=2433.3 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=2528 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3593.9/5120.0 MiB (Medium) priv=3587.2 ws=3450.3 | LOCAL[use=2533.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=2628 MiB copy=0.475 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3694.2/5120.0 MiB (Medium) priv=3687.5 ws=3550.4 | LOCAL[use=2633.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=2728 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3794.6/5120.0 MiB (Medium) priv=3787.8 ws=3650.5 | LOCAL[use=2733.7 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=2828 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3894.9/5120.0 MiB (Medium) priv=3888.2 ws=3750.7 | LOCAL[use=2833.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=2928 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=3995.2/5120.0 MiB (Medium) priv=3988.5 ws=3850.8 | LOCAL[use=2934.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=3028 MiB copy=0.473 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=4095.6/5120.0 MiB (Medium) priv=4088.9 ws=3951.0 | LOCAL[use=3034.1 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=3128 MiB copy=0.475 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=4196.9/5120.0 MiB (Medium) priv=4189.2 ws=4051.1 | LOCAL[use=3134.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=3228 MiB copy=0.475 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=4297.3/5120.0 MiB (Medium) priv=4289.5 ws=4151.3 | LOCAL[use=3234.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=3328 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=4397.6/5120.0 MiB (Medium) priv=4389.9 ws=4251.4 | LOCAL[use=3334.5 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=3428 MiB copy=0.479 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=4498.0/5120.0 MiB (Medium) priv=4490.2 ws=4351.6 | LOCAL[use=3434.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=3528 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=4598.3/5120.0 MiB (Medium) priv=4590.6 ws=4451.7 | LOCAL[use=3534.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=3628 MiB copy=0.471 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=4699.6/5120.0 MiB (High) priv=4690.9 ws=4551.9 | LOCAL[use=3634.9 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=3728 MiB copy=0.474 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=4800.0/5120.0 MiB (High) priv=4791.2 ws=4652.0 | LOCAL[use=3735.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=3828 MiB copy=0.472 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=4900.3/5120.0 MiB (High) priv=4891.6 ws=4752.2 | LOCAL[use=3835.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=3928 MiB copy=0.473 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=5000.7/5120.0 MiB (High) priv=4991.9 ws=4852.3 | LOCAL[use=3935.3 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=4015 MiB copy=0.472 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=5064.9/5120.0 MiB (High) priv=5056.1 ws=4916.4 | LOCAL[use=4023.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] cpu=1000 gpu=4038 MiB copy=0.472 ms (0.99x) stg=3 hr=0x00000000 rem=0x00000000 | app=5089.0/5120.0 MiB (High) priv=5080.3 ws=4940.5 | LOCAL[use=4047.5 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d11] STOP reason=near_app_limit peak_gpu=4038 MiB base_copy=0.475028 ms | freed: app=463.9/5120.0 MiB (Low) priv=462.1 ws=459.8 | LOCAL[use=0.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+--- MEMORY PROBE: mixed_d3d12 [idle] step=100 max=16384 cpu_hold=1000 ---
+MEM[mixed_d3d12] held cpu=1000 MiB | app=1462.9/5120.0 MiB (Low) priv=1462.2 ws=1457.8
+MEM[mixed_d3d12] cpu=1000 gpu=128 MiB copy=0.462 ms (1.00x) stg=3 hr=0x00000000 rem=0x00000000 | app=1467.1/5120.0 MiB (Low) priv=1465.3 ws=1460.7 | LOCAL[use=129.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=228 MiB copy=0.472 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1467.1/5120.0 MiB (Low) priv=1465.4 ws=1460.7 | LOCAL[use=230.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=328 MiB copy=0.469 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1467.1/5120.0 MiB (Low) priv=1465.4 ws=1460.7 | LOCAL[use=330.1 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=428 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1531.3/5120.0 MiB (Low) priv=1529.6 ws=1460.7 | LOCAL[use=430.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=528 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1632.6/5120.0 MiB (Low) priv=1629.9 ws=1560.9 | LOCAL[use=530.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=628 MiB copy=0.469 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1733.0/5120.0 MiB (Low) priv=1730.2 ws=1661.0 | LOCAL[use=630.5 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=728 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1833.3/5120.0 MiB (Low) priv=1830.6 ws=1761.2 | LOCAL[use=730.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=828 MiB copy=0.471 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=1933.6/5120.0 MiB (Low) priv=1930.9 ws=1861.3 | LOCAL[use=830.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=928 MiB copy=0.469 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=2034.0/5120.0 MiB (Low) priv=2031.2 ws=1961.4 | LOCAL[use=930.9 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=1028 MiB copy=0.469 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=2135.3/5120.0 MiB (Low) priv=2131.6 ws=2061.5 | LOCAL[use=1031.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=1128 MiB copy=0.476 ms (1.03x) stg=3 hr=0x00000000 rem=0x00000000 | app=2235.6/5120.0 MiB (Low) priv=2231.9 ws=2161.7 | LOCAL[use=1131.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=1228 MiB copy=0.475 ms (1.03x) stg=3 hr=0x00000000 rem=0x00000000 | app=2335.9/5120.0 MiB (Low) priv=2332.2 ws=2261.8 | LOCAL[use=1231.3 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=1328 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=2436.3/5120.0 MiB (Low) priv=2432.5 ws=2361.9 | LOCAL[use=1331.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=1428 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=2536.6/5120.0 MiB (Low) priv=2532.9 ws=2462.1 | LOCAL[use=1431.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=1528 MiB copy=0.471 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=2637.9/5120.0 MiB (Medium) priv=2633.2 ws=2562.2 | LOCAL[use=1531.7 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=1628 MiB copy=0.469 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=2738.3/5120.0 MiB (Medium) priv=2733.5 ws=2662.3 | LOCAL[use=1631.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=1728 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=2838.6/5120.0 MiB (Medium) priv=2833.8 ws=2762.5 | LOCAL[use=1732.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=1828 MiB copy=0.475 ms (1.03x) stg=3 hr=0x00000000 rem=0x00000000 | app=2938.9/5120.0 MiB (Medium) priv=2934.2 ws=2862.6 | LOCAL[use=1832.1 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=1928 MiB copy=0.468 ms (1.01x) stg=3 hr=0x00000000 rem=0x00000000 | app=3039.2/5120.0 MiB (Medium) priv=3034.5 ws=2962.7 | LOCAL[use=1932.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=2028 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=3140.6/5120.0 MiB (Medium) priv=3134.8 ws=3062.9 | LOCAL[use=2032.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=2128 MiB copy=0.471 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=3240.9/5120.0 MiB (Medium) priv=3235.2 ws=3163.0 | LOCAL[use=2132.5 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=2228 MiB copy=0.471 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=3341.2/5120.0 MiB (Medium) priv=3335.5 ws=3263.1 | LOCAL[use=2232.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=2328 MiB copy=0.473 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=3441.5/5120.0 MiB (Medium) priv=3435.8 ws=3363.3 | LOCAL[use=2332.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=2428 MiB copy=0.469 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=3541.9/5120.0 MiB (Medium) priv=3536.1 ws=3463.4 | LOCAL[use=2432.9 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=2528 MiB copy=0.471 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=3643.2/5120.0 MiB (Medium) priv=3636.5 ws=3563.5 | LOCAL[use=2533.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=2628 MiB copy=0.472 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=3743.5/5120.0 MiB (Medium) priv=3736.8 ws=3663.6 | LOCAL[use=2633.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=2728 MiB copy=0.473 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=3843.8/5120.0 MiB (Medium) priv=3837.1 ws=3763.8 | LOCAL[use=2733.3 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=2828 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=3944.2/5120.0 MiB (Medium) priv=3937.4 ws=3863.9 | LOCAL[use=2833.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=2928 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=4044.5/5120.0 MiB (Medium) priv=4037.7 ws=3964.0 | LOCAL[use=2933.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=3028 MiB copy=0.472 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=4144.8/5120.0 MiB (Medium) priv=4138.1 ws=4064.2 | LOCAL[use=3033.7 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=3128 MiB copy=0.471 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=4246.1/5120.0 MiB (Medium) priv=4238.4 ws=4164.3 | LOCAL[use=3133.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=3228 MiB copy=0.474 ms (1.03x) stg=3 hr=0x00000000 rem=0x00000000 | app=4346.5/5120.0 MiB (Medium) priv=4338.7 ws=4264.4 | LOCAL[use=3234.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=3328 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=4446.8/5120.0 MiB (Medium) priv=4439.1 ws=4364.5 | LOCAL[use=3334.1 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=3428 MiB copy=0.472 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=4547.1/5120.0 MiB (Medium) priv=4539.4 ws=4464.7 | LOCAL[use=3434.2 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=3528 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=4647.4/5120.0 MiB (High) priv=4639.7 ws=4564.8 | LOCAL[use=3534.4 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=3628 MiB copy=0.470 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=4748.8/5120.0 MiB (High) priv=4740.0 ws=4664.9 | LOCAL[use=3634.5 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=3728 MiB copy=0.469 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=4849.1/5120.0 MiB (High) priv=4840.4 ws=4765.1 | LOCAL[use=3734.6 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=3828 MiB copy=0.469 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=4949.4/5120.0 MiB (High) priv=4940.7 ws=4865.2 | LOCAL[use=3834.8 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=3928 MiB copy=0.469 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=5049.7/5120.0 MiB (High) priv=5041.0 ws=4965.3 | LOCAL[use=3934.9 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] cpu=1000 gpu=3966 MiB copy=0.469 ms (1.02x) stg=3 hr=0x00000000 rem=0x00000000 | app=5087.9/5120.0 MiB (High) priv=5079.1 ws=5003.4 | LOCAL[use=3973.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+MEM[mixed_d3d12] STOP reason=near_app_limit peak_gpu=3966 MiB base_copy=0.461915 ms | freed: app=487.6/5120.0 MiB (Low) priv=485.8 ws=483.6 | LOCAL[use=0.0 bud=4147.2 res=0.0/2188.8] NON_LOCAL[use=0.0 bud=0.0 res=0.0/0.0]
+=== PROFILER COMPLETED ===
