@@ -1,0 +1,172 @@
+name: Build UWP packages & WARP smoke test
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    env:
+      PLATFORM_TOOLSET: v145
+      WINDOWS_SDK: 10.0.26100.0
+
+    steps:
+      - name: Disable newline conversion
+        run: git config --global core.autocrlf false
+
+      - uses: actions/checkout@v4
+        with:
+          path: src
+
+      - uses: microsoft/setup-msbuild@v2
+
+      - name: Run variant script self-test
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          python src/tools/make_variants.py self-test
+          if ($LASTEXITCODE -ne 0) { throw 'make_variants.py self-test failed' }
+
+      - name: Create sideload certificate
+        id: cert
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          New-Item -ItemType Directory -Force out | Out-Null
+          $cert = New-SelfSignedCertificate -Type Custom -Subject 'CN=XboxConsoleProfiler Development' `
+            -KeyUsage DigitalSignature -FriendlyName 'XboxConsoleProfiler Development' `
+            -CertStoreLocation 'Cert:\CurrentUser\My' -NotAfter (Get-Date).AddYears(1) `
+            -TextExtension @('2.5.29.37={text}1.3.6.1.5.5.7.3.3', '2.5.29.19={text}')
+          "thumbprint=$($cert.Thumbprint)" >> $env:GITHUB_OUTPUT
+          "subject=$($cert.Subject)" >> $env:GITHUB_OUTPUT
+          Export-Certificate -Cert $cert -FilePath out/XboxConsoleProfiler.cer | Out-Null
+
+      - name: Build all 4 side-by-side signed MSIX variants
+        shell: pwsh
+        env:
+          CERT_THUMBPRINT: ${{ steps.cert.outputs.thumbprint }}
+          CERT_SUBJECT: ${{ steps.cert.outputs.subject }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          python -m pip install --quiet uv
+          if ($LASTEXITCODE -ne 0) { throw 'uv install failed' }
+
+          $version = "0.1.$env:GITHUB_RUN_NUMBER.0"
+          $manifest = Resolve-Path src/src/Package.appxmanifest
+          $variants = @('plain', 'hevc', 'game', 'expanded')
+
+          foreach ($variant in $variants) {
+            Write-Host "=== Packaging variant: $variant (v$version) ==="
+            python src/tools/make_variants.py stamp --variant $variant --version $version `
+              --publisher $env:CERT_SUBJECT $manifest
+            if ($LASTEXITCODE -ne 0) { throw "Failed to stamp manifest for $variant" }
+
+            $vOut = Join-Path $env:GITHUB_WORKSPACE "out/$variant"
+            $pkgDir = Join-Path $vOut 'packages/'
+            $buildLog = Join-Path $vOut 'msbuild.log'
+            New-Item -ItemType Directory -Force $pkgDir | Out-Null
+
+            # First variant compiles the C++ binary and shaders; subsequent variants reuse the exact compiled .exe
+            # while regenerating Package.appxmanifest, resources.pri, .msix, and signature cleanly.
+            & MSBuild.exe src/XboxConsoleProfiler.sln /m /v:minimal `
+              /p:Configuration=Release /p:Platform=x64 `
+              "/p:PlatformToolset=$env:PLATFORM_TOOLSET" `
+              "/p:WindowsTargetPlatformVersion=$env:WINDOWS_SDK" `
+              /p:WindowsTargetPlatformMinVersion=10.0.17763.0 `
+              /p:GenerateAppxPackageOnBuild=true `
+              /p:UapAppxPackageBuildMode=SideloadOnly `
+              /p:AppxBundle=Never `
+              /p:AppxPackageExtension=.msix `
+              "/p:AppxPackageDir=$pkgDir" `
+              /p:AppxPackageSigningEnabled=true `
+              /p:PackageCertificateKeyFile= `
+              "/p:PackageCertificateThumbprint=$env:CERT_THUMBPRINT" `
+              /fl "/flp:logfile=$buildLog;verbosity=normal"
+            if ($LASTEXITCODE -ne 0) { throw "MSBuild failed for variant $variant" }
+
+            Copy-Item out/XboxConsoleProfiler.cer $vOut/
+            @(
+              "Repository: https://github.com/$env:GITHUB_REPOSITORY",
+              "Commit: $env:GITHUB_SHA",
+              "Run: https://github.com/$env:GITHUB_REPOSITORY/actions/runs/$env:GITHUB_RUN_ID",
+              "Variant: $variant",
+              "Version: $version",
+              "Build: Release x64; PlatformToolset=$env:PLATFORM_TOOLSET; Windows SDK=$env:WINDOWS_SDK"
+            ) | Set-Content (Join-Path $vOut 'SOURCES.txt') -Encoding utf8
+
+            python src/tools/make_variants.py check `
+              --base-dir (Join-Path $env:GITHUB_WORKSPACE 'out/plain/packages') `
+              --variant $variant `
+              --variant-dir $pkgDir `
+              --note (Join-Path $vOut 'VARIANT.txt')
+            if ($LASTEXITCODE -ne 0) { throw "Variant check failed for $variant" }
+
+            uv run --quiet --with pefile==2024.8.26 python src/tools/check_imports.py `
+              --allow src/tools/uwp-dlls-allow.txt `
+              --out (Join-Path $vOut 'imports') `
+              $pkgDir
+            if ($LASTEXITCODE -ne 0) { throw "UWP import check failed for $variant" }
+            Remove-Item (Join-Path $vOut 'imports/unpacked') -Recurse -Force
+          }
+
+          @('## Xbox Console Profiler packages', '', "Version `$version` — all 4 variants share the exact same `.exe` (verified by SHA-256) with distinct package identities for side-by-side installation.", '') >> $env:GITHUB_STEP_SUMMARY
+          foreach ($variant in $variants) {
+            $vOut = Join-Path $env:GITHUB_WORKSPACE "out/$variant"
+            @("### $variant", '```') + @(Get-Content (Join-Path $vOut 'VARIANT.txt')) + @(Get-Content (Join-Path $vOut 'imports/check.txt')) + @('```', '') >> $env:GITHUB_STEP_SUMMARY
+          }
+
+      - name: Build and run desktop WARP smoke test
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $vswhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
+          $vsPath = & $vswhere -latest -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath
+          if (-not $vsPath) { throw 'Visual Studio C++ tools not found' }
+          $vcvars = Join-Path $vsPath 'VC\Auxiliary\Build\vcvars64.bat'
+          $sdkBin = Join-Path ${env:ProgramFiles(x86)} "Windows Kits\10\bin\$env:WINDOWS_SDK\x64"
+          $dxc = Join-Path $sdkBin 'dxc.exe'
+
+          New-Item -ItemType Directory -Force warp_build/shaders, warp_out | Out-Null
+          & $dxc -nologo -T cs_6_0 -E cs_copy -HV 2018 -WX -Vn g_GpuBenchCopyCS -Fh warp_build/shaders/GpuBenchCopyCS.h src/src/Shaders/GpuBenchCompute.hlsl
+          if ($LASTEXITCODE -ne 0) { throw 'dxc cs_copy failed' }
+          & $dxc -nologo -T cs_6_0 -E cs_alu -HV 2018 -WX -Vn g_GpuBenchAluCS -Fh warp_build/shaders/GpuBenchAluCS.h src/src/Shaders/GpuBenchCompute.hlsl
+          if ($LASTEXITCODE -ne 0) { throw 'dxc cs_alu failed' }
+
+          $cmd = "`"$vcvars`" && cl.exe /nologo /O2 /EHsc /std:c++17 /D_CRT_SECURE_NO_WARNINGS " +
+                 "/Isrc/src /Iwarp_build " +
+                 "src/tests/warp_smoke/main.cpp " +
+                 "src/src/ProfilerConfig.cpp src/src/ProfilerReport.cpp " +
+                 "src/src/SystemInfo.cpp src/src/InputState.cpp " +
+                 "src/src/BenchCpu.cpp src/src/BenchBandwidth.cpp " +
+                 "src/src/BenchGpu.cpp src/src/BenchMemory.cpp " +
+                 "/Fewarp_build/warp_smoke.exe /link d3d11.lib d3d12.lib dxgi.lib dxguid.lib"
+          cmd.exe /c $cmd
+          if ($LASTEXITCODE -ne 0) { throw 'WARP smoke test compile failed' }
+
+          .\warp_build\warp_smoke.exe warp_out
+          if ($LASTEXITCODE -ne 0) { throw 'WARP smoke test execution failed' }
+
+          python -c "import json, sys; d=json.load(open('warp_out/latest.json')); assert d['completed'] is True; p=d['phase_active']; assert p['cpu']['throughput_scaling']; assert p['bandwidth']['results']; assert 'gpu_time_share' in p['gpu']; assert p['memory']['d3d11']['peak_gpu_mib'] >= 128; assert p['memory']['d3d12']['peak_gpu_mib'] >= 128; assert p['memory']['mixed_d3d12']['peak_gpu_mib'] >= 128; print('WARP JSON validation: PASS')"
+          if ($LASTEXITCODE -ne 0) { throw 'WARP JSON validation failed' }
+
+      - name: Upload all profiler package variants
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: xbox-console-profiler-all-x64-${{ github.run_id }}
+          path: out/
+          if-no-files-found: warn
+
+      - name: Upload WARP smoke test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: xbox-console-profiler-warp-smoke-${{ github.run_id }}
+          path: warp_out/
+          if-no-files-found: warn
