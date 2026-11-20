@@ -31,7 +31,7 @@ IFrameworkView^ ProfilerApplicationSource::CreateView() {
   return ref new App();
 }
 
-App::App() = default;
+App::App() {}
 
 void App::Initialize(CoreApplicationView^ applicationView) {
   applicationView->Activated +=

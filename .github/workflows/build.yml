@@ -20,11 +20,11 @@ jobs:
       - name: Disable newline conversion
         run: git config --global core.autocrlf false
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           path: src
 
-      - uses: microsoft/setup-msbuild@v2
+      - uses: microsoft/setup-msbuild@v3
 
       - name: Run variant script self-test
         shell: pwsh
@@ -157,7 +157,7 @@ jobs:
 
       - name: Upload all profiler package variants
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: xbox-console-profiler-all-x64-${{ github.run_id }}
           path: out/
@@ -165,7 +165,7 @@ jobs:
 
       - name: Upload WARP smoke test results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: xbox-console-profiler-warp-smoke-${{ github.run_id }}
           path: warp_out/

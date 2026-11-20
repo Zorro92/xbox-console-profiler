@@ -79,7 +79,8 @@ Stats ComputeStats(std::vector<double> vals) {
   s.min_v = vals.front();
   s.max_v = vals.back();
   s.p50_v = vals[vals.size() / 2];
-  size_t i95 = static_cast<size_t>(std::min<double>(vals.size() - 1, std::floor(0.95 * (vals.size() - 1))));
+  const double last_idx = static_cast<double>(vals.size() - 1);
+  size_t i95 = static_cast<size_t>(std::min<double>(last_idx, std::floor(0.95 * last_idx)));
   s.p95_v = vals[i95];
   double sum = 0.0;
   for (double v : vals) sum += v;
